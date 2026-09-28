@@ -1,0 +1,139 @@
+{
+  "title": "PF2e Timekeeping",
+  "description": "Календарь, часы, погода, фазы луны и события для Pathfinder 2e. Основан на Simple Timekeeping 1.1.3 от theripper93.",
+  "id": "pf2e-timekeeping",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Yefim Lopatin",
+      "url": "https://github.com/yefim-lopatin"
+    },
+    {
+      "name": "theripper93",
+      "url": "https://theripper93.com",
+      "flags": {
+        "role": "Автор исходного Simple Timekeeping"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    },
+    {
+      "lang": "ja",
+      "name": "日本語",
+      "path": "languages/ja.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "languages/de.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "languages/fr.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "languages/es.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "languages/pt-br.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "languages/it.json"
+    },
+    {
+      "lang": "cn",
+      "name": "中文（简体）",
+      "path": "languages/cn.json"
+    },
+    {
+      "lang": "ca",
+      "name": "Català",
+      "path": "languages/ca.json"
+    },
+    {
+      "lang": "sv",
+      "name": "Svenska",
+      "path": "languages/sv.json"
+    },
+    {
+      "lang": "pl",
+      "name": "polski",
+      "path": "languages/pl.json"
+    },
+    {
+      "lang": "zh-tw",
+      "name": "Taiwanese Chinese",
+      "path": "languages/zh-tw.json"
+    },
+    {
+      "lang": "en-AU",
+      "name": "English (Australian)",
+      "path": "languages/en-au.json"
+    },
+    {
+      "lang": "ru",
+      "name": "русский (Russian)",
+      "path": "languages/ru.json"
+    },
+    {
+      "lang": "pt",
+      "name": "Portuguese",
+      "path": "languages/pt.json"
+    },
+    {
+      "lang": "zh-Hans",
+      "name": "Chinese (Simplified)",
+      "path": "languages/zh-hans.json"
+    },
+    {
+      "lang": "uk",
+      "name": "Українська (Ukrainian)",
+      "path": "languages/uk.json"
+    }
+  ],
+  "scripts": [],
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "packs": [],
+  "url": "https://github.com/yefim-lopatin/pf2e-timekeeping",
+  "manifest": "https://github.com/yefim-lopatin/pf2e-timekeeping/releases/latest/download/module.json",
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.5.0"
+        }
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "simple-timekeeping",
+        "type": "module"
+      }
+    ]
+  },
+  "compatibility": {
+    "minimum": "14.361",
+    "verified": "14.368",
+    "maximum": "14"
+  },
+  "download": "https://github.com/yefim-lopatin/pf2e-timekeeping/releases/download/v1.0.0/pf2e-timekeeping.zip"
+}

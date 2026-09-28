@@ -1,0 +1,34 @@
+<div>
+    <nav class="controls">
+        <div class="controls-left">
+            {{#each controls.left as |control|}}
+                <button type="button" class="ui-control icon {{control.icon}}" data-tooltip="{{control.tooltip}}" data-action="{{control.action}}"></button>
+            {{/each}}
+        </div>
+        <div class="inner-nav-wrapper">
+        {{#each customBadges as |badge|}}
+        <span class="custom-badge" data-index={{badge.index}} style="background: {{badge.color}};">{{badge.label}}</span>
+        {{/each}}
+        <span class="season" id="full-date">
+        </span>
+        <span id="date-time-text">{{dateTimeText}}</span>
+                </span>
+                <span id="moon-phase">{{dateTimeText}}</span>
+        <span id="weather">{{dateTimeText}}</span>
+        </div>
+        <div class="controls-right">
+            {{#each controls.right as |control|}}
+                <button type="button" class="ui-control icon {{control.icon}}" data-tooltip="{{control.tooltip}}" data-action="{{control.action}}"></button>
+            {{/each}}
+        </div>
+    </nav>
+    <section id="events" class="collapsed">
+        <nav>
+            <input type="search" placeholder="{{localize "pf2e-timekeeping.app.searchEvents"}}" name="" id="search">
+            <button type="button" class="ui-control icon fas fa-calendar-plus" data-tooltip="pf2e-timekeeping.app.controls.create-event.tooltip" data-action="create-event"></button>
+        </nav>
+        <ul id="events-list" class="scrollable">
+        </ul>
+    </section>
+
+</div>

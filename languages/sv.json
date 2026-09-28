@@ -1,0 +1,329 @@
+{
+  "pf2e-timekeeping": {
+    "day": "Dag",
+    "days": "Dagar",
+    "in-progress": "Pågående",
+    "paused": "Pausad",
+    "paused-info": "Enkel tidtagning - Tidsförflyttningen är pausad, klicka för att återuppta.",
+    "unpaused-info": "Enkel tidtagning - Tidsförflyttningen återupptas, klicka för att pausa. Tiden kommer fortfarande att vara pausad om spelet är pausat eller om strid är aktiv.",
+    "calendar-dusk-dawn": "Denna kalender innehåller tider för gryning och skymning, alla värden som anges i inställningarna eller baseras på klimatzon ignoreras och kalendervärdet används.",
+    "settings": {
+      "config-menu": {
+        "label": "Konfigurera",
+        "name": "Konfiguration",
+        "hint": "Konfigurera modulens inställningar."
+      }
+    },
+    "weather": {
+      "clear": "Klar",
+      "partlyCloudy": "Delvis molnigt",
+      "cloudy": "Molnigt",
+      "overcast": "Molnigt",
+      "rain": "Regn",
+      "thunderstorm": "Åskväder",
+      "drizzle": "Drizzle",
+      "snow": "Snö",
+      "blizzard": "Blizzard",
+      "hail": "Hagel",
+      "fog": "Dimma",
+      "mist": "Dimma",
+      "windy": "Hissar",
+      "tornado": "Tornado",
+      "hurricane": "Hurricane",
+      "ashfall": "Askfall",
+      "sandstorm": "Sandstorm",
+      "luminousSky": "Luminös himmel",
+      "bloodRain": "Blodregn",
+      "manaStorm": "Mana Storm",
+      "arcaneFog": "Arcane Fog",
+      "voidstorm": "Voidstorm",
+      "celestialEclipse": "Himmelsförmörkelse",
+      "meteorShower": "Meteorregn",
+      "frozenHell": "Fryst helvete",
+      "sunshower": "Solskydd",
+      "spectralStorm": "Spektral storm",
+      "etherealDrizzle": "Eteriskt droppregn",
+      "wildMagicWinds": "Vilda magiska vindar"
+    },
+    "moonPhase": {
+      "new": "Nymåne",
+      "waxingCrescent": "Vaxning Halvmåne",
+      "firstQuarter": "Första kvartalet",
+      "waxingGibbous": "Waxing Gibbous",
+      "full": "Fullmåne",
+      "waningGibbous": "Avtagande Gibbous",
+      "lastQuarter": "Förra kvartalet",
+      "waningCrescent": "Avtagande halvmåne",
+      "bloodMoon": "Blodmåne",
+      "eclipse": "Eclipse",
+      "voidMoon": "Void Moon",
+      "twinMoons": "Tvillingmånar",
+      "manaMoon": "Mana Moon",
+      "celestialAlignment": "Himmelsk inriktning",
+      "shatteredMoon": "Splittrad måne",
+      "spiritMoon": "Spirit Moon"
+    },
+    "configuration": {
+      "title": "Meny för konfiguration",
+      "firstTimeTitle": "Första gången du installerar",
+      "tabs": {
+        "configuration": "Konfiguration",
+        "visibility": "Synlighet",
+        "aspect": "Aspekt",
+        "badges": "Badges",
+        "time": "Tid",
+        "calendar": "Kalender",
+        "automation": "Automatisering",
+        "environment": "Miljö"
+      },
+      "seasons": {
+        "label": "Säsongens färger"
+      },
+      "macrosFieldset": {
+        "label": "Makron för automatisering",
+        "hint": "Makron som ska köras vid specifika tidpunkter på dagen. Makron kommer att köras för alla anslutna användare som har behörighet att köra dem."
+      },
+      "newDayMacros": {
+        "label": "Makron för den nya dagen"
+      },
+      "dawnMacros": {
+        "label": "Dawn Makron"
+      },
+      "duskMacros": {
+        "label": "Makron i skymningen"
+      },
+      "middayMacros": {
+        "label": "Makron vid lunchtid"
+      },
+      "use24HourClock": {
+        "label": "Använd 24 timmars klocka"
+      },
+      "wideLetterSpacing": {
+        "label": "Stort avstånd mellan bokstäverna"
+      },
+      "useMonospace": {
+        "label": "Använd Monospace-teckensnitt"
+      },
+      "noPills": {
+        "label": "Vanlig stil"
+      },
+      "useFullWidth": {
+        "label": "Kraft maximal bredd"
+      },
+      "hideInCombat": {
+        "label": "Göm dig under strid"
+      },
+      "topOffset": {
+        "label": "Övre marginal (px)"
+      },
+      "hideExpired": {
+        "label": "Dölj utgångna evenemang"
+      },
+      "copyButton": {
+        "label": "Kopiera från aktuell konfiguration (spara och öppna igen för formatering)"
+      },
+      "customCalendar": {
+        "label": "Anpassad kalender JSON",
+        "hint": "JSON-definition för den anpassade kalendern. Det finns ingen support för den anpassade kalendern eller för hur du konfigurerar JSON-filen. Du kan hitta några exempel på kalendrar på wikin.",
+        "error": "Ogiltigt JSON-format för den anpassade kalendern, inställningen har återställts till föregående tillstånd. Kontrollera konsolen för mer information."
+      },
+      "useCustomMoons": {
+        "label": "Anpassa månar"
+      },
+      "customMoons": {
+        "label": "Anpassade månar JSON",
+        "hint": "JSON-definition för de anpassade månarna. Även om månar också kan definieras i kalenderns JSON-fil gör detta att du kan åsidosätta månarna utan att behöva ändra kalenderns JSON-fil i fall där du t.ex. använder en kalender som definieras av systemet eller en annan modul och du vill lägga till månar i den. Det finns inget stöd för de anpassade månarna eller för hur man konfigurerar JSON-filen, se wikin för exempel.",
+        "error": "Ogiltigt JSON-format för de anpassade månarna, inställningen har återställts till det tidigare tillståndet. Kontrollera konsolen för mer information."
+      },
+      "climateData": {
+        "label": "Klimatdata",
+        "hint": "JSON-definition för generering av väder och temperatur. Det finns ingen support för det anpassade klimatet eller för hur JSON-filen ska konfigureras."
+      },
+      "customBadge": {
+        "label": "Anpassad badge"
+      },
+      "calendar": {
+        "label": "Kalender",
+        "hint": "Anpassad kalender enligt definitionen i Custom Calendar JSON",
+        "default": "Systemets standard",
+        "custom": "Anpassad"
+      },
+      "moonLabel": {
+        "label": "Etikett för månfas"
+      },
+      "moonColor": {
+        "label": "Månfas färg"
+      },
+      "moonAutomation": {
+        "label": "Sync Moon Badge",
+        "hint": "Om månar definieras i kalenderns JSON, kommer PF2e Timekeeping automatiskt att uppdatera månmärket."
+      },
+      "weatherLabel": {
+        "label": "Väderetikett"
+      },
+      "weatherOverlay": {
+        "label": "Animation av väder"
+      },
+      "weatherColor": {
+        "label": "Väderfärg"
+      },
+      "showFullDate": {
+        "label": "Visa hela datummärket"
+      },
+      "daysDisplay": {
+        "label": "Dagar Display",
+        "options": {
+          "none": "Ingen",
+          "sinceEpoch": "Sedan kalenderns början",
+          "dayOfYear": "Dag på året"
+        }
+      },
+      "dayOffset": {
+        "label": "Start Dag Offset",
+        "hint": "Offset som ska tillämpas på antalet dagar vid användning av alternativet \"Sedan kalenderns början\" i \"Dagar"
+      },
+      "dawn": {
+        "label": "Gryning",
+        "hint": "Tid på dygnet i procent, t.ex. om dygnet är 24 timmar skulle 0,5 vara 12:00 och 0,25 skulle vara 06:00"
+      },
+      "dusk": {
+        "label": "Skymning",
+        "hint": "Tid på dygnet i procent, t.ex. om dygnet är 24 timmar skulle 0,5 vara 12:00 och 0,75 skulle vara 18:00"
+      },
+      "latitude": {
+        "label": "Latitud",
+        "hint": "Om en latitud annan än 0 anges ignoreras värdena för skymning och gryning och beräknas i stället dynamiskt utifrån latituden. Latitud används också för att beräkna väder. Typiska latitudintervall: Ekvatorial (0-15°), Tropisk (15-23,5°), Subtropisk (23,5-35°), Tempererad (35-55°), Subpolär (55-66,5°) och Polar (66,5-90°).",
+        "options": {
+          "disabled": "Inaktiverad",
+          "equatorial": "Ekvatorial",
+          "tropical": "Tropisk",
+          "subtropical": "Subtropisk",
+          "hotDesert": "Varm öken",
+          "mediterranean": "Medelhavet",
+          "temperate": "Tempererad",
+          "coolTemperate": "Sval Tempererad",
+          "subpolar": "Subpolär",
+          "boreal": "Boreal"
+        }
+      },
+      "genWeather": {
+        "label": "Generera väder",
+        "hint": "Genererar ett nytt väder varje dag. Använder latitud för att bestämma klimatet.",
+        "options": {
+          "no": "Nej",
+          "noTemp": "Ja (ingen temperatur)",
+          "tempC": "Ja + Celsius",
+          "tempF": "Ja + Fahrenheit"
+        }
+      },
+      "dayColor": {
+        "label": "Färgton dag"
+      },
+      "nightColor": {
+        "label": "Nattfärg"
+      },
+      "hueIntensity": {
+        "label": "Scen Färgton Intensitet",
+        "hint": "När PF2e Timekeeping ställer in en mörkernivå kommer den också att applicera en nyans på scenen baserat på dag- och nattfärgerna."
+      },
+      "badgeLabel": {
+        "label": "Etikett"
+      },
+      "badgeColor": {
+        "label": "Färg"
+      },
+      "secondsPerRound": {
+        "label": "Sekunder per stridsrunda"
+      },
+      "secondsPerRealSecond": {
+        "label": "Sekund per realtidssekund"
+      },
+      "journalEntryEvents": {
+        "label": "Händelser Journalpost Namn"
+      },
+      "clockSeconds": {
+        "label": "Uppdateringsfrekvens (sekunder)"
+      },
+      "setDateTime": {
+        "label": "Ställ in aktuellt datum/tid"
+      },
+      "darknessSync": {
+        "label": "Synkronisering av mörker och väder",
+        "hint": "Synkroniseringen kan konfigureras per scen längst ned på fliken Belysning.",
+        "options": {
+          "default": "Använd global standard",
+          "sync": "Synkronisera",
+          "noSync": "Synkronisera inte",
+          "weatherOnly": "Synkronisera endast väder",
+          "darknessOnly": "Synkronisera endast mörker"
+        }
+      }
+    },
+    "app": {
+      "searchEvents": "Sök händelser",
+      "create-event": {
+        "eventTime": {
+          "label": "Start av evenemang"
+        },
+        "eventEnd": {
+          "label": "Händelsens slut (valfritt)"
+        },
+        "duration": {
+          "label": "Händelsens varaktighet (timmar)"
+        },
+        "edit": {
+          "label": "Redigera datum/tid för händelse"
+        },
+        "repeat": {
+          "label": "Upprepa",
+          "options": {
+            "none": "Upprepa inte",
+            "day": "Varje dag",
+            "week": "Varje vecka",
+            "month": "Varje månad",
+            "year": "Varje år"
+          }
+        }
+      },
+      "controls": {
+        "create-event": {
+          "tooltip": "Skapa evenemang"
+        },
+        "day-back": {
+          "tooltip": "En dag tillbaka (Ctrl 1 vecka, Shift 3 dagar, Alt 2 dagar)"
+        },
+        "hour-back": {
+          "tooltip": "Tillbaka en timme (Ctrl 30min, Shift 10min, Alt 5min)"
+        },
+        "hour-forward": {
+          "tooltip": "Förskjutning en timme (Ctrl 30min, Shift 10min, Alt 5min)"
+        },
+        "day-forward": {
+          "tooltip": "Avancera en dag (Ctrl 1 vecka, Shift 3 dagar, Alt 2 dagar)"
+        },
+        "sunrise": {
+          "tooltip": "Soluppgång"
+        },
+        "sunset": {
+          "tooltip": "Solnedgång"
+        },
+        "midday": {
+          "tooltip": "Mitt på dagen"
+        },
+        "midnight": {
+          "tooltip": "Midnatt"
+        },
+        "configure": {
+          "tooltip": "Konfigurera"
+        },
+        "toggle-events": {
+          "tooltip": "Händelser"
+        }
+      },
+      "weather": {
+        "generate": "Generera"
+      }
+    },
+    "flags": {}
+  }
+}

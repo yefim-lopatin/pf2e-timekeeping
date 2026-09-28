@@ -1,0 +1,194 @@
+.form-helper .form-fields:has(code-mirror) {
+  max-height: 20vh;
+  --scroll-margin: 0.75rem;
+  margin-right: calc(-1 * var(--scroll-margin));
+  padding-right: var(--scroll-margin);
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
+}
+
+.context-items:has(.long-context-menu) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#pf2e-timekeeping {
+  position: absolute;
+  height: auto;
+  width: auto !important;
+  border: none;
+  box-shadow: none;
+  border-radius: 0px;
+  top: 0 !important;
+  left: auto !important;
+  pointer-events: all;
+  z-index: -1;
+  overflow: hidden;
+  margin-top: 16px;
+  background: var(--control-active-bg-color);
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+  min-height: auto;
+}
+#pf2e-timekeeping.no-pills nav .inner-nav-wrapper span {
+  background: transparent !important;
+  color: var(--color-text-primary);
+  box-shadow: none;
+}
+#pf2e-timekeeping.wide-letter-spacing nav .inner-nav-wrapper span {
+  letter-spacing: 0.2rem;
+}
+#pf2e-timekeeping.use-monospace nav .inner-nav-wrapper span {
+  font-family: ui-monospace;
+}
+#pf2e-timekeeping.use-full-width {
+  min-width: 100%;
+}
+#pf2e-timekeeping #events {
+  transition: height 0.3s ease-in-out;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 0.3rem;
+}
+#pf2e-timekeeping #events.collapsed {
+  height: 0;
+  padding: 0;
+}
+#pf2e-timekeeping #events nav {
+  justify-content: flex-end;
+}
+#pf2e-timekeeping #events nav button {
+  pointer-events: all;
+}
+#pf2e-timekeeping #events ul {
+  margin-right: 0;
+  padding-right: 0;
+  padding-left: 0.5rem;
+  list-style: square;
+  flex: 1;
+  font-size: var(--font-size-12);
+  display: flex;
+  flex-direction: column;
+}
+#pf2e-timekeeping #events ul li {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem 0.3rem;
+  border-radius: 1px;
+  cursor: pointer;
+}
+#pf2e-timekeeping #events ul li:hover {
+  background: rgba(128, 128, 128, 0.265);
+}
+#pf2e-timekeeping #events ul li .fas.fa-eye {
+  height: 100%;
+  align-content: center;
+  color: var(--color-cool-3);
+  opacity: 0.5;
+  margin: 0 0.3rem;
+}
+#pf2e-timekeeping #events ul li .timestamp {
+  margin-left: auto;
+}
+#pf2e-timekeeping #events ul li:last-child {
+  margin-bottom: 0.25rem;
+}
+#pf2e-timekeeping #events ul li.expired {
+  opacity: 0.5;
+}
+#pf2e-timekeeping #events ul li.soon {
+  text-decoration: underline;
+  text-decoration-color: var(--color-warm-2);
+  order: -1;
+}
+#pf2e-timekeeping .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#pf2e-timekeeping nav {
+  width: 100%;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+#pf2e-timekeeping nav .controls-left,
+#pf2e-timekeeping nav .controls-right {
+  display: flex;
+}
+#pf2e-timekeeping nav #date-time-text {
+  white-space: nowrap;
+  border-radius: 1000px;
+  --paused-glow-color: var(--color-level-info);
+  --paused-glow-multiplier: 0.3;
+}
+#pf2e-timekeeping nav #date-time-text.paused {
+  animation: pulse-blue 2.5s infinite;
+  box-shadow: 0 0 calc(5px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(10px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(15px * var(--paused-glow-multiplier)) var(--paused-glow-color);
+}
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 calc(5px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(10px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(15px * var(--paused-glow-multiplier)) var(--paused-glow-color);
+  }
+  50% {
+    box-shadow: 0 0 calc(10px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(20px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(30px * var(--paused-glow-multiplier)) var(--paused-glow-color);
+  }
+  100% {
+    box-shadow: 0 0 calc(5px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(10px * var(--paused-glow-multiplier)) var(--paused-glow-color), 0 0 calc(15px * var(--paused-glow-multiplier)) var(--paused-glow-color);
+  }
+}
+#pf2e-timekeeping nav button {
+  background: transparent;
+  border: transparent;
+  position: relative;
+}
+#pf2e-timekeeping nav button i {
+  position: absolute;
+  color: var(--color-warm-2);
+  font-size: var(--font-size-9);
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+  pointer-events: none;
+}
+#pf2e-timekeeping nav .inner-nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 2rem;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: var(--font-size-12);
+  gap: 0.3rem;
+}
+#pf2e-timekeeping nav .inner-nav-wrapper span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000px;
+  box-shadow: 0 0 5px black, 0 0 5px black inset;
+  padding: 0.1rem 0.5rem;
+  white-space: nowrap;
+  transition: all 2s ease-in-out;
+}
+#pf2e-timekeeping nav .inner-nav-wrapper span img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  border-radius: 50%;
+}
+#pf2e-timekeeping nav .inner-nav-wrapper span .content-link {
+  background: none;
+  color: unset;
+  border: none;
+}
+#pf2e-timekeeping nav .inner-nav-wrapper span .content-link i {
+  color: unset;
+}/*# sourceMappingURL=module.css.map */
