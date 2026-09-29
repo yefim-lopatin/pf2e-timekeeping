@@ -31,34 +31,24 @@ function trackedCharacters() {
 }
 
 async function warningContent(actor, stage, elapsed) {
-    const key = `${MODULE_ID}.rest.${stage}`;
+    const key = `${MODULE_ID}.rest`;
     const escape = foundry.utils.escapeHTML;
-    const hours = new Intl.NumberFormat(game.i18n.lang || "en", { maximumFractionDigits: 1 }).format(elapsed / HOUR);
-    const title = escape(game.i18n.localize(`${key}.title`));
-    const body = escape(game.i18n.format(`${key}.body`, { actor: actor.name, hours }));
-    const note = escape(game.i18n.localize(`${MODULE_ID}.rest.note`));
-    const rule = stage === "sleep" ? "2443" : "2820";
-    const link = escape(game.i18n.localize(`${MODULE_ID}.rest.rules`));
-    const conditionKey = `${MODULE_ID}.rest.condition`;
-    const conditionText = key => escape(game.i18n.localize(`${conditionKey}.${key}`));
+    const locale = game.i18n.lang || "en";
+    const count = Math.round(elapsed / HOUR * 10) / 10;
+    const hours = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(count);
+    const form = new Intl.PluralRules(locale).select(count);
+    const summaryKey = game.i18n.has(`${key}.summary.${form}`) ? `${key}.summary.${form}` : `${key}.summary.other`;
+    const summary = escape(game.i18n.format(summaryKey, { hours }));
+    const conditionName = escape(game.i18n.localize(`${key}.condition.name`));
     const conditionLink = await foundry.applications.ux.TextEditor.enrichHTML(
-        `@UUID[Compendium.pf2e.conditionitems.Item.HL2l2VRSaQHu9lUw]{${conditionText("name")}}`
+        `@UUID[Compendium.pf2e.conditionitems.Item.HL2l2VRSaQHu9lUw]{${conditionName}}`
     );
     const recovery = escape(game.i18n.localize(`${key}.recovery`));
+    const possible = escape(game.i18n.localize(`${key}.possible`));
     return `<section class="pf2e-timekeeping-rest-warning ${stage}">
-        <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> ${title}</h3>
-        <p><strong>${body}</strong></p>
-        <div class="rest-condition">
-            <p><strong>${conditionText("heading")}:</strong> ${conditionLink}</p>
-            <ul>
-                <li>${conditionText("penalty")}</li>
-                <li>${conditionText("exploration")}</li>
-                <li>${conditionText("stacking")}</li>
-            </ul>
-            <p>${recovery}</p>
-        </div>
-        <p class="rest-note">${note}</p>
-        <a href="https://2e.aonprd.com/Rules.aspx?ID=${rule}" target="_blank" rel="noopener noreferrer">${link}</a>
+        <p><strong>${summary}</strong></p>
+        <p>${recovery}</p>
+        <p>${possible} ${conditionLink}</p>
     </section>`;
 }
 
