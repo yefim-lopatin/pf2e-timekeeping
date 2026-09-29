@@ -261,7 +261,7 @@
       "pf2eNotice": "PF2e Timekeeping uses its own calendar. The PF2e system clock may show a different date. Choose one way to control lighting for each scene.",
       "restWarnings": {
         "label": "Post rest reminders in chat",
-        "hint": "After PF2e’s Rest for the Night: a reminder at 8 hours and a warning after 16 hours of world time. Advance the clock to the end of the rest first. Travel time is not tracked separately; no conditions are applied. A connected GM is required to post messages."
+        "hint": "After PF2e’s Rest for the Night: one warning upon reaching 16 hours of world time. Advance the clock to the end of the rest first. No conditions are applied automatically. A connected GM is required to post the message."
       }
     },
     "app": {

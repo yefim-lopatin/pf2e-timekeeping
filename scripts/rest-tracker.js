@@ -15,7 +15,6 @@ export async function recordRest(actor) {
     await actor.setFlag(MODULE_ID, FLAG, {
         cycle: foundry.utils.randomID(),
         endedAt: game.time.worldTime,
-        travelWarned: false,
         sleepWarned: false,
     });
 }
@@ -80,14 +79,8 @@ export async function checkRestWarnings() {
         if (!state?.cycle || !Number.isFinite(state.endedAt)) continue;
         const elapsed = now - state.endedAt;
         if (elapsed < 0) continue; // Перевод часов назад не создаёт новый отдых.
-        if (elapsed > 16 * HOUR && !state.sleepWarned) {
+        if (elapsed >= 16 * HOUR && !state.sleepWarned) {
             await warn(actor, state, "sleep", elapsed);
-            // При скачке времени сразу за 16 часов достаточно одного сообщения.
-            if (actor.getFlag(MODULE_ID, FLAG)?.cycle === state.cycle) {
-                await actor.update({ [`flags.${MODULE_ID}.${FLAG}.travelWarned`]: true });
-            }
-        } else if (elapsed >= 8 * HOUR && !state.travelWarned && !state.sleepWarned) {
-            await warn(actor, state, "travel", elapsed);
         }
     }
 }
