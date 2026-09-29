@@ -233,6 +233,16 @@
 .pf2e-timekeeping-rest-warning .rest-note {
   font-size: 0.9em;
 }
+.pf2e-timekeeping-rest-warning .rest-condition {
+  margin: 10px 0;
+  padding: 6px 0;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+.pf2e-timekeeping-rest-warning .rest-condition ul {
+  padding-left: 20px;
+  margin: 6px 0;
+}
 .pf2e-timekeeping-rest-warning a {
   color: inherit;
   text-decoration: underline;

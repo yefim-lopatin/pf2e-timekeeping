@@ -30,7 +30,7 @@ function trackedCharacters() {
     return [...actors.values()].filter(actor => actor.type === "character");
 }
 
-function warningContent(actor, stage, elapsed) {
+async function warningContent(actor, stage, elapsed) {
     const key = `${MODULE_ID}.rest.${stage}`;
     const escape = foundry.utils.escapeHTML;
     const hours = new Intl.NumberFormat(game.i18n.lang || "en", { maximumFractionDigits: 1 }).format(elapsed / HOUR);
@@ -39,9 +39,24 @@ function warningContent(actor, stage, elapsed) {
     const note = escape(game.i18n.localize(`${MODULE_ID}.rest.note`));
     const rule = stage === "sleep" ? "2443" : "2820";
     const link = escape(game.i18n.localize(`${MODULE_ID}.rest.rules`));
+    const conditionKey = `${MODULE_ID}.rest.condition`;
+    const conditionText = key => escape(game.i18n.localize(`${conditionKey}.${key}`));
+    const conditionLink = await foundry.applications.ux.TextEditor.enrichHTML(
+        `@UUID[Compendium.pf2e.conditionitems.Item.HL2l2VRSaQHu9lUw]{${conditionText("name")}}`
+    );
+    const recovery = escape(game.i18n.localize(`${key}.recovery`));
     return `<section class="pf2e-timekeeping-rest-warning ${stage}">
         <h3><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> ${title}</h3>
         <p><strong>${body}</strong></p>
+        <div class="rest-condition">
+            <p><strong>${conditionText("heading")}:</strong> ${conditionLink}</p>
+            <ul>
+                <li>${conditionText("penalty")}</li>
+                <li>${conditionText("exploration")}</li>
+                <li>${conditionText("stacking")}</li>
+            </ul>
+            <p>${recovery}</p>
+        </div>
         <p class="rest-note">${note}</p>
         <a href="https://2e.aonprd.com/Rules.aspx?ID=${rule}" target="_blank" rel="noopener noreferrer">${link}</a>
     </section>`;
@@ -55,7 +70,7 @@ async function warn(actor, state, stage, elapsed) {
     if (!sent) {
         await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor }),
-            content: warningContent(actor, stage, elapsed),
+            content: await warningContent(actor, stage, elapsed),
             whisper: [],
             blind: false,
             flags: { [MODULE_ID]: { restWarning: warningId } },

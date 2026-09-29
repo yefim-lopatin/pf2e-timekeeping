@@ -2065,15 +2065,24 @@
     "rest": {
       "travel": {
         "title": "Check time spent traveling",
-        "body": "{actor}: {hours} hours have passed since the last rest. If the character spent all of that time traveling overland, they have reached the usual 8-hour limit before fatigue. Heat, cold, or heavy precipitation can cause fatigue sooner."
+        "body": "{actor}: {hours} hours have passed since the last rest. If the character spent all of that time traveling overland, they have reached the usual 8-hour limit before fatigue. Heat, cold, or heavy precipitation can cause fatigue sooner.",
+        "recovery": "Recovery: a full night’s rest."
       },
       "sleep": {
         "title": "A long time without rest",
-        "body": "{actor}: {hours} hours have passed since the last rest. Under the general PF2e rule, going more than 16 hours without resting causes fatigue. Recovery requires at least 8 continuous hours of rest; account for the character’s special abilities."
+        "body": "{actor}: {hours} hours have passed since the last rest. Under the general PF2e rule, going more than 16 hours without resting causes fatigue. Recovery requires at least 8 continuous hours of rest; account for the character’s special abilities.",
+        "recovery": "Recovery from fatigue caused by lack of rest: at least 8 continuous hours of rest."
       },
       "note": "A world-time reminder. The fatigued condition is not applied automatically.",
       "rules": "PF2e rule — Archives of Nethys",
-      "saveError": "Could not save the character’s rest time. Check the connection and repeat the rest."
+      "saveError": "Could not save the character’s rest time. Check the connection and repeat the rest.",
+      "condition": {
+        "heading": "Condition to apply manually",
+        "name": "Fatigued",
+        "penalty": "A −1 status penalty to AC and all saving throws.",
+        "exploration": "Cannot use exploration activities performed while traveling.",
+        "stacking": "No condition value: if already fatigued, do not add another instance or increase its severity."
+      }
     }
   }
 }
