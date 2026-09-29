@@ -167,8 +167,21 @@
       "weatherColor": {
         "label": "Weather Color"
       },
+      "panelVisibility": {
+        "label": "Panel visibility",
+        "hint": "The GM’s choices apply to everyone. Hidden time, moon phases, and weather continue to update. The day counter can be hidden separately below."
+      },
+      "showTime": {
+        "label": "Show time"
+      },
       "showFullDate": {
-        "label": "Show full date badge"
+        "label": "Show date and weekday"
+      },
+      "showMoonPhase": {
+        "label": "Show moon phase"
+      },
+      "showWeather": {
+        "label": "Show weather"
       },
       "daysDisplay": {
         "label": "Days Display",

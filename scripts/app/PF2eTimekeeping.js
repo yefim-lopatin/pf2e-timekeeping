@@ -173,12 +173,12 @@ export class PF2eTimekeeping extends HandlebarsApplication {
     }
 
     get dateTimeText() {
-        const timeText = this.timeComponentsToString({ hour: this.components.hour, minute: this.components.minute });
-        const daysDisplay = getSetting("configuration").daysDisplay;
-        if (daysDisplay === "none") return timeText;
-        else if (daysDisplay === "sinceEpoch") return l(`${MODULE_ID}.day`) + ` ${Math.floor(this.worldTime / this.secondsInDay) + Math.round(getSetting("configuration").dayOffset || 0)} - ${timeText}`
-        else if (daysDisplay === "dayOfYear") return l(`${MODULE_ID}.day`) + ` ${this.components.day} - ${timeText}`
-        return timeText;
+        const config = getSetting("configuration");
+        const timeText = config.showTime === false ? "" : this.timeComponentsToString({ hour: this.components.hour, minute: this.components.minute });
+        let dayText = "";
+        if (config.daysDisplay === "sinceEpoch") dayText = l(`${MODULE_ID}.day`) + ` ${Math.floor(this.worldTime / this.secondsInDay) + Math.round(config.dayOffset || 0)}`;
+        else if (config.daysDisplay === "dayOfYear") dayText = l(`${MODULE_ID}.day`) + ` ${this.components.day}`;
+        return [dayText, timeText].filter(Boolean).join(" - ");
     }
 
     get fullDateText() {
@@ -273,7 +273,9 @@ export class PF2eTimekeeping extends HandlebarsApplication {
     updateDateTimeText() {
         if (!this.element) return;
         const dtText = this.element.querySelector("#date-time-text");
-        dtText.innerText = this.dateTimeText;
+        const text = this.dateTimeText;
+        dtText.innerText = text;
+        dtText.classList.toggle("hidden", !text);
         dtText.style.backgroundColor = getSkyColor(this.dayTimePercent, getSetting("configuration").nightColor, getSetting("configuration").dayColor, this.dawn, this.dusk);
         const seasonName = game.time.calendar.seasons.values[Math.clamp(0, game.time.calendar.seasons.values.length - 1, this.components.season)]?.name;
         const season = seasonName ? " | " + l(seasonName) : "";
@@ -405,7 +407,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
         const label = getSetting("configuration").weatherLabel;
         this.element.querySelector("#weather").innerText = localizeBadgeLabel(label);
         this.element.querySelector("#weather").style.background = getSetting("configuration").weatherColor;
-        this.element.querySelector("#weather").classList.toggle("hidden", !label);
+        this.element.querySelector("#weather").classList.toggle("hidden", !label || getSetting("configuration").showWeather === false);
     }
 
     updateMoonBadge() {
@@ -413,7 +415,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
         this.element.querySelector("#moon-phase").innerText = localizeBadgeLabel(label);
         this.element.querySelector("#moon-phase").style.background = getSetting("configuration").moonColor;
         this.element.querySelector("#moon-phase").dataset.tooltip = getSetting("configuration").moonTooltip ?? "";
-        this.element.querySelector("#moon-phase").classList.toggle("hidden", !label);
+        this.element.querySelector("#moon-phase").classList.toggle("hidden", !label || getSetting("configuration").showMoonPhase === false);
     }
 
     async updateBadges() {

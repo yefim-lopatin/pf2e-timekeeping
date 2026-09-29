@@ -14,11 +14,16 @@ export async function openConfiguration() {
     const fb = new FormBuilder().object({ ...getSetting("configuration"), weatherLabel: localizeBadgeLabel(getSetting("configuration").weatherLabel), moonLabel: localizeBadgeLabel(getSetting("configuration").moonLabel) }).title("PF2e Timekeeping: " + l(r + "title")).size({ width: 800 })
 
     fb.tab({ id: "badges", icon: "fas fa-badge", label: r + "tabs.badges" })
+        .html(`<fieldset><legend>${l(r + "panelVisibility.label")}</legend><p class="hint">${l(r + "panelVisibility.hint")}</p>`)
+        .checkbox({ name: "showTime", label: r + "showTime.label" })
+        .checkbox({ name: "showFullDate", label: r + "showFullDate.label" })
+        .checkbox({ name: "showMoonPhase", label: r + "showMoonPhase.label" })
+        .checkbox({ name: "showWeather", label: r + "showWeather.label" })
+        .html(`</fieldset>`)
         .text({ name: "weatherLabel", label: r + "weatherLabel.label" })
         .color({ name: "weatherColor", label: r + "weatherColor.label" })
         .text({ name: "moonLabel", label: r + "moonLabel.label" })
         .color({ name: "moonColor", label: r + "moonColor.label" })
-        .checkbox({ name: "showFullDate", label: r + "showFullDate.label" })
         .select({
             name: "daysDisplay", label: r + "daysDisplay.label", options: {
                 "none": r + "daysDisplay.options.none",
