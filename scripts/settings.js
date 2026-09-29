@@ -64,6 +64,7 @@ export function registerSettings() {
                 secondsPerRealSecond: 10,
                 secondsPerRound: 6,
                 clockSeconds: 60,
+                restWarnings: true,
                 dayOffset: 0,
                 newDayMacros: [],
                 dawnMacros: [],

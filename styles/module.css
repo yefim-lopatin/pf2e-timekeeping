@@ -16,6 +16,7 @@
   position: absolute;
   height: auto;
   width: auto !important;
+  max-width: 100%;
   border: none;
   box-shadow: none;
   border-radius: 0px;
@@ -36,7 +37,7 @@
   box-shadow: none;
 }
 #pf2e-timekeeping.wide-letter-spacing nav .inner-nav-wrapper span {
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.03rem;
 }
 #pf2e-timekeeping.use-monospace nav .inner-nav-wrapper span {
   font-family: ui-monospace;
@@ -120,6 +121,10 @@
 #pf2e-timekeeping nav .controls-left,
 #pf2e-timekeeping nav .controls-right {
   display: flex;
+  flex-shrink: 0;
+}
+#pf2e-timekeeping nav.controls {
+  padding: 0 0.3rem;
 }
 #pf2e-timekeeping nav #date-time-text {
   white-space: nowrap;
@@ -147,6 +152,9 @@
   border: transparent;
   position: relative;
 }
+#pf2e-timekeeping nav.controls button {
+  --control-size: 24px;
+}
 #pf2e-timekeeping nav button i {
   position: absolute;
   color: var(--color-warm-2);
@@ -158,23 +166,27 @@
 }
 #pf2e-timekeeping nav .inner-nav-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
-  justify-content: center;
-  margin: 0 2rem;
+  justify-content: flex-start;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  margin: 0 0.2rem;
   color: black;
   text-transform: uppercase;
   font-weight: 100;
-  font-size: var(--font-size-12);
-  gap: 0.3rem;
+  font-size: var(--font-size-10);
+  gap: 0.1rem;
 }
 #pf2e-timekeeping nav .inner-nav-wrapper span {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   border-radius: 1000px;
   box-shadow: 0 0 5px black, 0 0 5px black inset;
-  padding: 0.1rem 0.5rem;
+  padding: 0.1rem 0.2rem;
   white-space: nowrap;
   transition: all 2s ease-in-out;
 }
@@ -191,4 +203,37 @@
 }
 #pf2e-timekeeping nav .inner-nav-wrapper span .content-link i {
   color: unset;
-}/*# sourceMappingURL=module.css.map */
+}
+
+
+.pf2e-timekeeping-rest-warning {
+  border: 2px solid #b77b14;
+  border-left-width: 6px;
+  border-radius: 6px;
+  padding: 12px;
+  background: #fff3d6;
+  color: #33220d;
+}
+.pf2e-timekeeping-rest-warning.sleep {
+  border-color: #a42d35;
+  background: #ffe7e8;
+  color: #48191e;
+}
+.pf2e-timekeeping-rest-warning h3 {
+  color: inherit;
+  border: none;
+  font-size: 1.15em;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.pf2e-timekeeping-rest-warning p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+.pf2e-timekeeping-rest-warning .rest-note {
+  font-size: 0.9em;
+}
+.pf2e-timekeeping-rest-warning a {
+  color: inherit;
+  text-decoration: underline;
+}

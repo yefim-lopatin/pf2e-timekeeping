@@ -258,7 +258,11 @@
           "darknessOnly": "Sync Darkness Only"
         }
       },
-      "pf2eNotice": "PF2e Timekeeping uses its own calendar. The PF2e system clock may show a different date. Choose one way to control lighting for each scene."
+      "pf2eNotice": "PF2e Timekeeping uses its own calendar. The PF2e system clock may show a different date. Choose one way to control lighting for each scene.",
+      "restWarnings": {
+        "label": "Post rest reminders in chat",
+        "hint": "After PF2e’s Rest for the Night: a reminder at 8 hours and a warning after 16 hours of world time. Advance the clock to the end of the rest first. Travel time is not tracked separately; no conditions are applied. A connected GM is required to post messages."
+      }
     },
     "app": {
       "searchEvents": "Search Events",
@@ -2057,6 +2061,19 @@
         },
         "moons": {}
       }
+    },
+    "rest": {
+      "travel": {
+        "title": "Check time spent traveling",
+        "body": "{actor}: {hours} hours have passed since the last rest. If the character spent all of that time traveling overland, they have reached the usual 8-hour limit before fatigue. Heat, cold, or heavy precipitation can cause fatigue sooner."
+      },
+      "sleep": {
+        "title": "A long time without rest",
+        "body": "{actor}: {hours} hours have passed since the last rest. Under the general PF2e rule, going more than 16 hours without resting causes fatigue. Recovery requires at least 8 continuous hours of rest; account for the character’s special abilities."
+      },
+      "note": "A world-time reminder. The fatigued condition is not applied automatically.",
+      "rules": "PF2e rule — Archives of Nethys",
+      "saveError": "Could not save the character’s rest time. Check the connection and repeat the rest."
     }
   }
 }

@@ -56,6 +56,7 @@ export async function openConfiguration() {
         .number({ name: "secondsPerRealSecond", min: 0, label: r + "secondsPerRealSecond.label" })
         .number({ name: "secondsPerRound", min: 0, step: 1, label: r + "secondsPerRound.label" })
         .number({ name: "clockSeconds", min: 10, step: 1, label: r + "clockSeconds.label" })
+        .checkbox({ name: "restWarnings", label: r + "restWarnings.label", hint: r + "restWarnings.hint" })
 
     fb.tab({ id: "environment", icon: "fas fa-globe", label: r + "tabs.environment" })
         .color({ name: "dayColor", label: r + "dayColor.label" })

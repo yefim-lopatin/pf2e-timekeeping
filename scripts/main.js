@@ -3,6 +3,7 @@ import { CalendarClass } from "./CalendarClass.js";
 import { CALENDARS } from "./calendars.js";
 import { initConfig, openConfiguration, openFirstTimeConfiguration } from "./config.js";
 import { getSetting, registerSettings, setSetting } from "./settings.js";
+import { registerRestTracking } from "./rest-tracker.js";
 
 import { MODULE_ID } from "./module-id.js";
 export { MODULE_ID };
@@ -17,6 +18,7 @@ export function getDefaultCalendar() {
 
 Hooks.on("init", () => {
     registerSettings();
+    registerRestTracking();
     PF2eTimekeeping.CALENDARS = CALENDARS;
     DEFAULT_CALENDAR = CONFIG.time.worldCalendarConfig;
     CONFIG.time.worldCalendarClass = CalendarClass;
