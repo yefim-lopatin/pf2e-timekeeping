@@ -32,9 +32,9 @@ export function registerSettings() {
             scope: "world",
             useCache: true,
             default: {
-                weatherLabel: "Click Me",
+                weatherLabel: `${MODULE_ID}.defaults.weather`,
                 weatherColor: "#ffffff",
-                moonLabel: "🌕 Click Me",
+                moonLabel: `${MODULE_ID}.defaults.moon`,
                 moonColor: "#ffffff",
                 daysDisplay: "sinceEpoch",
                 showFullDate: true,

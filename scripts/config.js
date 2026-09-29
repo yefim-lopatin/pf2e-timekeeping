@@ -2,7 +2,7 @@ import { MODULE_ID } from "./module-id.js";
 import { getDefaultCalendar, setCalendarJSON } from "./main.js";
 import { FormBuilder } from "./lib/formBuilder.js"
 import { getSetting, setSetting } from "./settings.js";
-import { l, mergeClone } from "./lib/utils.js";
+import { l, mergeClone, localizeBadgeLabel } from "./lib/utils.js";
 import { CALENDARS } from "./calendars.js";
 
 export function initConfig() { }
@@ -11,7 +11,7 @@ export const BADGE_COUNT = 3;
 
 export async function openConfiguration() {
     const r = `${MODULE_ID}.configuration.`;
-    const fb = new FormBuilder().object(getSetting("configuration")).title("PF2e Timekeeping: " + l(r + "title")).size({ width: 800 })
+    const fb = new FormBuilder().object({ ...getSetting("configuration"), weatherLabel: localizeBadgeLabel(getSetting("configuration").weatherLabel), moonLabel: localizeBadgeLabel(getSetting("configuration").moonLabel) }).title("PF2e Timekeeping: " + l(r + "title")).size({ width: 800 })
 
     fb.tab({ id: "badges", icon: "fas fa-badge", label: r + "tabs.badges" })
         .text({ name: "weatherLabel", label: r + "weatherLabel.label" })
@@ -80,13 +80,16 @@ export async function openConfiguration() {
             }
         })
         .json({ name: "climateData", label: r + "climateData.label", hint: r + "climateData.hint" })
-        .html(`<a href="https://wiki.theripper93.com/premium/simple-timekeeping#custom-climate-data" target="_blank">WIKI</a>`)
+        .html(`<a href="https://wiki.theripper93.com/premium/simple-timekeeping#custom-climate-data" target="_blank">${l(`${MODULE_ID}.actions.help`)}</a>`)
 
 
+    const defaultCalendarName = getDefaultCalendar().name === "Simplified Gregorian"
+        ? l(`${MODULE_ID}.calendars.gregorian.name`)
+        : l(getDefaultCalendar().name);
     const calendarOptions = CALENDARS.reduce((options, calendar) => {
         options[calendar.id] = calendar.name
         return options;
-    }, { default: l(r + "calendar.default") + ` (${getDefaultCalendar().name})`, custom: r + "calendar.custom" });
+    }, { default: l(r + "calendar.default") + ` (${defaultCalendarName})`, custom: r + "calendar.custom" });
 
     fb.tab({ id: "calendar", icon: "fas fa-calendar", label: r + "tabs.calendar" })
         .text({ name: "journalEntryEvents", label: r + "journalEntryEvents.label" })
@@ -95,7 +98,7 @@ export async function openConfiguration() {
         .json({ name: "customCalendar", label: r + "customCalendar.label", hint: r + "customCalendar.hint" })
         .checkbox({ name: "useCustomMoons", label: r + "useCustomMoons.label" })
         .json({ name: "customMoons", label: r + "customMoons.label", hint: r + "customMoons.hint" })
-        .html(`<a href="https://wiki.theripper93.com/premium/simple-timekeeping#sample-calendars" target="_blank">WIKI</a>`)
+        .html(`<a href="https://wiki.theripper93.com/premium/simple-timekeeping#sample-calendars" target="_blank">${l(`${MODULE_ID}.actions.help`)}</a>`)
 
     fb.tab({ id: "automation", icon: "fas fa-gear", label: r + "tabs.automation" })
         .select({
@@ -125,7 +128,7 @@ export async function openConfiguration() {
     fb.onRender((context, options, element) => {
 
         if (game.system.id === "pf2e") {
-            const warnHtml = `<p class="hint">PF2e Timekeeping использует свой календарь. Часы системы PF2e могут показывать другую дату. Для каждой сцены выбирайте один способ управления освещением.</p>`;
+            const warnHtml = `<p class="hint">${l(`${MODULE_ID}.configuration.pf2eNotice`)}</p>`;
             (element.querySelector(".sheet-tabs.tabs") ?? element.firstElementChild).insertAdjacentHTML("beforebegin", warnHtml);
         }
 
@@ -218,7 +221,7 @@ export async function openFirstTimeConfiguration() {
     const calendarOptions = CALENDARS.reduce((options, calendar) => {
         options[calendar.id] = calendar.name;
         return options;
-    }, { default: l(r + "calendar.default") + ` (${getDefaultCalendar().name})`, custom: r + "calendar.custom" });
+    }, { default: l(r + "calendar.default") + ` (${l(getDefaultCalendar().name)})`, custom: r + "calendar.custom" });
 
     fb.select({
         name: "calendar",
@@ -287,7 +290,7 @@ export async function openFirstTimeConfiguration() {
 
     fb.onRender((context, options, element) => {
         if (game.system.id === "pf2e") {
-            const warnHtml = `<p class="hint">PF2e Timekeeping использует свой календарь. Часы системы PF2e могут показывать другую дату. Для каждой сцены выбирайте один способ управления освещением.</p>`;
+            const warnHtml = `<p class="hint">${l(`${MODULE_ID}.configuration.pf2eNotice`)}</p>`;
             (element.querySelector(".sheet-tabs.tabs") ?? element.firstElementChild).insertAdjacentHTML("beforebegin", warnHtml);
         }
         const updateCalendarDescription = () => {

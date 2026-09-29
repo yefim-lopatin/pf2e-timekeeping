@@ -50,7 +50,7 @@ export function setCalendarJSON(firstTime = false) {
             try {
                 json = JSON.parse(config.customCalendar);
             } catch (e) {
-                setTimeout(() => ui.notifications.error("PF2e Timekeeping: Invalid Calendar JSON.", { permanent: true }), 1000)
+                setTimeout(() => ui.notifications.error(game.i18n.localize(`${MODULE_ID}.errors.calendarJSON`), { permanent: true }), 1000)
             }
 
             // Validate JSON structure
@@ -59,7 +59,7 @@ export function setCalendarJSON(firstTime = false) {
             const daysInYear = json.months.values.reduce((acc, v) => acc += v.days, 0);
             const daysInYearJson = json.days.daysPerYear;
             if (daysInYear !== daysInYearJson) {
-                setTimeout(() => ui.notifications.error(`PF2e Timekeeping: Calendar JSON definition states ${daysInYearJson} Days in one year, but months add up to ${daysInYear} Days. Please fix the calendar json accordingly.`, { permanent: true }), 1000)
+                setTimeout(() => ui.notifications.error(game.i18n.format(`${MODULE_ID}.errors.calendarDays`, { declared: daysInYearJson, actual: daysInYear }), { permanent: true }), 1000)
                 json.days.daysPerYear = daysInYear;
             }
 
@@ -67,7 +67,7 @@ export function setCalendarJSON(firstTime = false) {
                 json.seasons = {
                     values: [
                         {
-                            "name": "Missing Seasons",
+                            "name": `${MODULE_ID}.defaults.missingSeasons`,
                             "monthStart": 0,
                             "monthEnd": 999
                         },
@@ -93,7 +93,7 @@ export function setCalendarJSON(firstTime = false) {
             CONFIG.time.worldCalendarConfig = json;
             defaultChanged = true;
         } catch (e) {
-            setTimeout(() => ui.notifications.error("PF2e Timekeeping: Failed to set custom calendar, please review your calendar JSON.", { permanent: true }), 1000)
+            setTimeout(() => ui.notifications.error(game.i18n.localize(`${MODULE_ID}.errors.calendarApply`), { permanent: true }), 1000)
             console.error(e)
         }
     } else {

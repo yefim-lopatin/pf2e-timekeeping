@@ -1,3 +1,5 @@
+import { MODULE_ID } from "./module-id.js";
+
 const GREGORIAN = {
     "name": "Simplified Gregorian",
     "id": "gregorian",
@@ -1456,6 +1458,19 @@ calendars.forEach(json => {
     }
 })
 
-export const CALENDARS = [
-    ...calendars.sort((a, b) => a.name.localeCompare(b.name))
-]
+// Только встроенные календари используют наши ключи перевода.
+// Названия и правила пользовательских календарей остаются в ведении автора мира.
+export const CALENDARS = calendars.sort((a, b) => a.name.localeCompare(b.name)).map(calendar => {
+    const prefix = `${MODULE_ID}.calendars.${calendar.id}`;
+    calendar.name = `${prefix}.name`;
+    calendar.description = `${prefix}.description`;
+    for (const section of ["months", "days", "seasons", "moons"]) {
+        calendar[section]?.values?.forEach((entry, index) => {
+            const key = `${prefix}.${section}.${index}`;
+            entry.name = `${key}.name`;
+            if (entry.abbreviation !== undefined) entry.abbreviation = `${key}.abbreviation`;
+            if (entry.phaseNames) entry.phaseNames = entry.phaseNames.map((_, i) => `${key}.phases.${i}`);
+        });
+    }
+    return calendar;
+});

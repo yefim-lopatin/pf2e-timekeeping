@@ -186,6 +186,27 @@ export function l(x) {
   return game.i18n.localize(x);
 }
 
+export function localizeMonthForDate(name) {
+  const key = name?.startsWith(`${MODULE_ID}.calendars.`)
+    ? name.replace(/\.name$/, ".date") : null;
+  return key && game.i18n.has(key) ? l(key) : l(name);
+}
+
+export function formatDayCount(count) {
+  const locale = game.i18n.lang || "en";
+  const form = new Intl.PluralRules(locale).select(count);
+  return game.i18n.format(`${MODULE_ID}.dayCount.${form}`, {
+    count: new Intl.NumberFormat(locale).format(count),
+  });
+}
+
+export function localizeBadgeLabel(label) {
+  // Старые стандартные подписи отображаются переведёнными без изменения настроек мира.
+  if (label === "Click Me") return l(`${MODULE_ID}.defaults.weather`);
+  if (label === "🌕 Click Me") return `🌕 ${l(`${MODULE_ID}.defaults.moon`)}`;
+  return l(label ?? "");
+}
+
 export function easeInSine(x) {
   return 1 - Math.cos((x * Math.PI) / 2);
 }

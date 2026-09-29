@@ -161,7 +161,7 @@ export class FormBuilder {
         return this;
     }
 
-    submitButton({ enabled = true, label = "Confirm", icon = "fa-solid fa-check" } = {}) {
+    submitButton({ enabled = true, label = `${MODULE_ID}.actions.save`, icon = "fa-solid fa-check" } = {}) {
         const submitButton = {
             type: "submit",
             action: "submit",

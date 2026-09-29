@@ -1,6 +1,6 @@
 import { MODULE_ID } from "../module-id.js";
 import { setCalendarJSON } from "../main.js";
-import { HandlebarsApplication, l, mergeClone, setProperty } from "../lib/utils.js";
+import { HandlebarsApplication, l, mergeClone, setProperty, localizeMonthForDate, formatDayCount, localizeBadgeLabel } from "../lib/utils.js";
 import { BADGE_COUNT, openConfiguration } from "../config.js";
 import { getSetting, setSetting } from "../settings.js";
 import { FormBuilder } from "../lib/formBuilder.js";
@@ -148,7 +148,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
                 if (!Array.isArray(moons)) throw new Error("Custom moons JSON is not an array");
                 return moons;
             } catch (error) {
-                ui.notifications.error("PF2e Timekeeping: Failed to parse custom moons JSON, please check your settings.");
+                ui.notifications.error(l(`${MODULE_ID}.errors.moonsJSON`));
                 console.error("Failed to parse custom moons JSON", error);
                 return [];
             }
@@ -193,7 +193,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
         const hourText = hourValue < 10 ? `0${hourValue}` : hourValue;
         const minuteText = minute < 10 ? `0${minute}` : minute;
         const secondText = second !== undefined ? second < 10 ? `0${second}` : second : "";
-        return `${hourText}:${minuteText}` + (secondText ? `:${secondText}` : "") + (use24HourClock ? "" : ` ${isPM ? "PM" : "AM"}`);
+        return `${hourText}:${minuteText}` + (secondText ? `:${secondText}` : "") + (use24HourClock ? "" : ` ${l(`${MODULE_ID}.date.${isPM ? "pm" : "am"}`)}`);
     }
 
     updateMoonPhase() {
@@ -231,12 +231,12 @@ export class PF2eTimekeeping extends HandlebarsApplication {
             let fullDateString = "";
             if (!isIntercalaryMonth) fullDateString += l(calendar.days.values[realDayOfWeek].name) + ", "
             if (!isIntercalaryMonth) fullDateString += (dayOfMonth + 1) + " ";
-            fullDateString += l(calendar.months.values[month].name) + ", ";
+            fullDateString += (isIntercalaryMonth ? l(calendar.months.values[month].name) : localizeMonthForDate(calendar.months.values[month].name)) + l(`${MODULE_ID}.date.yearSeparator`);
             fullDateString += (year + 1);
             return fullDateString;
         } catch (error) {
             console.error("Failed to generate full date text, please check your calendar JSON for errors.", error)
-            return "ERROR - Check Console"
+            return l(`${MODULE_ID}.errors.date`)
         }
     }
 
@@ -403,14 +403,14 @@ export class PF2eTimekeeping extends HandlebarsApplication {
 
     updateWeatherBadge() {
         const label = getSetting("configuration").weatherLabel;
-        this.element.querySelector("#weather").innerText = label;
+        this.element.querySelector("#weather").innerText = localizeBadgeLabel(label);
         this.element.querySelector("#weather").style.background = getSetting("configuration").weatherColor;
         this.element.querySelector("#weather").classList.toggle("hidden", !label);
     }
 
     updateMoonBadge() {
         const label = getSetting("configuration").moonLabel;
-        this.element.querySelector("#moon-phase").innerText = label;
+        this.element.querySelector("#moon-phase").innerText = localizeBadgeLabel(label);
         this.element.querySelector("#moon-phase").style.background = getSetting("configuration").moonColor;
         this.element.querySelector("#moon-phase").dataset.tooltip = getSetting("configuration").moonTooltip ?? "";
         this.element.querySelector("#moon-phase").classList.toggle("hidden", !label);
@@ -545,7 +545,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
             let timeText = inProgress ? l(MODULE_ID + ".in-progress") : this.timestamp(eventTime);
             if (eventEnd) timeText += ` - ${this.timestamp(eventEnd)}`
             const soon = inProgress || (expiration - now < this.secondsInDay && eventTime - now > 0) || (eventEnd !== undefined && now > eventTime && now < eventEnd);
-            const daysLeft = now > expiration || soon ? "" : ` - ${daysToEvent} ${l(MODULE_ID + ".days")}`
+            const daysLeft = now > expiration || soon ? "" : ` - ${formatDayCount(daysToEvent)}`
             if (soon) showNotification = true;
             html += `<li class="${now > expiration ? "expired" : ""} ${soon ? "soon" : ""}" ${now > expiration ? `style="order: 9999"` : ""} data-uuid="${event.uuid}"><span class="name">${event.name + daysLeft}</span><span class="timestamp ${isObserver ? "" : "hidden"}">[${timeText}]</span>${hasPlayerViewerIcon}</li>`
         }
@@ -581,7 +581,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
             const custom = JSON.parse(json);
             return custom;
         } catch (e) {
-            ui.notifications.error("PF2e Timekeeping: Invalid Climate JSON. Using default.")
+            ui.notifications.error(l(`${MODULE_ID}.errors.climateJSON`))
             console.error(e);
             return CLIMATE_DATA;
         }
@@ -659,7 +659,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
 
     async setCustomBadge(id, label, color) {
         id = parseInt(id);
-        if (id > BADGE_COUNT) return ui.notifications.error("Badge number outside of valid range.")
+        if (id > BADGE_COUNT) return ui.notifications.error(game.i18n.format(`${MODULE_ID}.errors.badgeNumber`, { max: BADGE_COUNT }))
 
         const config = getSetting("configuration");
         if (label !== undefined) setProperty(config, `badge${id - 1}.label`, label)
@@ -670,7 +670,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
 
     getCustomBadge(id) {
         id = parseInt(id);
-        if (id < 1 || id > BADGE_COUNT) return ui.notifications.error("Badge number outside of valid range.")
+        if (id < 1 || id > BADGE_COUNT) return ui.notifications.error(game.i18n.format(`${MODULE_ID}.errors.badgeNumber`, { max: BADGE_COUNT }))
         const config = getSetting("configuration");
         const badge = config[`badge${id - 1}`] ?? {};
         return {
@@ -707,7 +707,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
 
         if (!page) {
             const documents = await this.eventsJournal.createEmbeddedDocuments("JournalEntryPage", [{
-                name: "New Event",
+                name: l(`${MODULE_ID}.defaults.newEvent`),
                 [`flags.${MODULE_ID}`]: { ...data }
             }])
             console.log(documents)
@@ -928,7 +928,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
                 this.advanceToTimePercent(0)
                 break;
             default:
-                ui.notifications.warn("WORK IN PROGRESS - No action set for: " + action)
+                ui.notifications.warn(game.i18n.format(`${MODULE_ID}.errors.action`, { action }))
         }
     }
 
@@ -1063,36 +1063,36 @@ export class PF2eTimekeeping extends HandlebarsApplication {
         content.innerHTML = `
     <form>
       <div>
-        <label>Year: <input type="number" name="year" value="${components.year + 1}" /></label>
+        <label>${l(`${MODULE_ID}.date.year`)}: <input type="number" name="year" value="${components.year + 1}" /></label>
       </div>
       <div>
-        <label>Month:
+        <label>${l(`${MODULE_ID}.date.month`)}:
           <select name="month">${monthOptions}</select>
         </label>
       </div>
       <div>
-        <label>Day:
+        <label>${l(`${MODULE_ID}.date.day`)}:
           <select name="day">${updateDayOptions(components.month)}</select>
         </label>
       </div>
       <div>
-        <label>Hour:
+        <label>${l(`${MODULE_ID}.date.hour`)}:
           <input type="number" name="hour" value="${components.hour}" min="0" max="${hoursPerDay - 1}" />
         </label>
       </div>
       <div>
-        <label>Minute:
+        <label>${l(`${MODULE_ID}.date.minute`)}:
           <input type="number" name="minute" value="${components.minute}" min="0" max="${minutesPerHour - 1}" />
         </label>
       </div>
     </form>
   `;
         const result = await foundry.applications.api.DialogV2.prompt({
-            window: { title: "Pick Date and Time" },
+            window: { title: l(`${MODULE_ID}.date.title`) },
             content,
             modal: true,
             ok: {
-                label: "Confirm",
+                label: l(`${MODULE_ID}.actions.confirm`),
                 default: true,
                 callback: (event, button, dialog) => {
                     const form = button.form;
@@ -1106,7 +1106,7 @@ export class PF2eTimekeeping extends HandlebarsApplication {
                 }
             },
             cancel: {
-                label: "Cancel"
+                label: l(`${MODULE_ID}.actions.cancel`)
             },
             render: (event) => {
                 const element = event.target.element;

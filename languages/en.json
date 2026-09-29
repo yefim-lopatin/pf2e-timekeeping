@@ -1,329 +1,2062 @@
 {
-    "pf2e-timekeeping": {
-        "day": "Day",
-        "days": "Days",
-        "in-progress": "In Progress",
-        "paused": "Paused",
-        "paused-info": "PF2e Timekeeping - Time advancement is paused, click to resume.",
-        "unpaused-info": "PF2e Timekeeping - Time advancement resumed, click to pause. The time will still be paused if the game is paused or if combat is active.",
-        "calendar-dusk-dawn": "This calendar includes dawn and dusk times, any value set in the settings or based on climate zone will be ignored and the calendar one will be used.",
-        "settings": {
-            "config-menu": {
-                "label": "Configure",
-                "name": "Configuration",
-                "hint": "Configure the module settings."
+  "pf2e-timekeeping": {
+    "day": "Day",
+    "days": "Days",
+    "in-progress": "In Progress",
+    "paused": "Paused",
+    "paused-info": "PF2e Timekeeping - Time advancement is paused, click to resume.",
+    "unpaused-info": "PF2e Timekeeping - Time advancement resumed, click to pause. The time will still be paused if the game is paused or if combat is active.",
+    "calendar-dusk-dawn": "This calendar includes dawn and dusk times, any value set in the settings or based on climate zone will be ignored and the calendar one will be used.",
+    "settings": {
+      "config-menu": {
+        "label": "Configure",
+        "name": "Configuration",
+        "hint": "Configure the module settings."
+      }
+    },
+    "weather": {
+      "clear": "Clear",
+      "partlyCloudy": "Partly Cloudy",
+      "cloudy": "Cloudy",
+      "overcast": "Overcast",
+      "rain": "Rain",
+      "thunderstorm": "Thunderstorm",
+      "drizzle": "Drizzle",
+      "snow": "Snow",
+      "blizzard": "Blizzard",
+      "hail": "Hail",
+      "fog": "Fog",
+      "mist": "Mist",
+      "windy": "Windy",
+      "tornado": "Tornado",
+      "hurricane": "Hurricane",
+      "ashfall": "Ashfall",
+      "sandstorm": "Sandstorm",
+      "luminousSky": "Luminous Sky",
+      "bloodRain": "Blood Rain",
+      "manaStorm": "Mana Storm",
+      "arcaneFog": "Arcane Fog",
+      "voidstorm": "Voidstorm",
+      "celestialEclipse": "Celestial Eclipse",
+      "meteorShower": "Meteor Shower",
+      "frozenHell": "Frozen Hell",
+      "sunshower": "Sunshower",
+      "spectralStorm": "Spectral Storm",
+      "etherealDrizzle": "Ethereal Drizzle",
+      "wildMagicWinds": "Wild Magic Winds"
+    },
+    "moonPhase": {
+      "new": "New Moon",
+      "waxingCrescent": "Waxing Crescent",
+      "firstQuarter": "First Quarter",
+      "waxingGibbous": "Waxing Gibbous",
+      "full": "Full Moon",
+      "waningGibbous": "Waning Gibbous",
+      "lastQuarter": "Last Quarter",
+      "waningCrescent": "Waning Crescent",
+      "bloodMoon": "Blood Moon",
+      "eclipse": "Eclipse",
+      "voidMoon": "Void Moon",
+      "twinMoons": "Twin Moons",
+      "manaMoon": "Mana Moon",
+      "celestialAlignment": "Celestial Alignment",
+      "shatteredMoon": "Shattered Moon",
+      "spiritMoon": "Spirit Moon"
+    },
+    "configuration": {
+      "title": "Configuration Menu",
+      "firstTimeTitle": "First Time Setup",
+      "tabs": {
+        "configuration": "Configuration",
+        "visibility": "Visibility",
+        "aspect": "Aspect",
+        "badges": "Badges",
+        "time": "Time",
+        "calendar": "Calendar",
+        "automation": "Automation",
+        "environment": "Environment"
+      },
+      "seasons": {
+        "label": "Season Colors"
+      },
+      "macrosFieldset": {
+        "label": "Automation Macros",
+        "hint": "Macros run at the selected time of day as the active Gamemaster, if they have permission to execute them."
+      },
+      "newDayMacros": {
+        "label": "New Day Macros"
+      },
+      "dawnMacros": {
+        "label": "Dawn Macros"
+      },
+      "duskMacros": {
+        "label": "Dusk Macros"
+      },
+      "middayMacros": {
+        "label": "Midday Macros"
+      },
+      "use24HourClock": {
+        "label": "Use 24 Hour Clock"
+      },
+      "wideLetterSpacing": {
+        "label": "Wide Letter Spacing"
+      },
+      "useMonospace": {
+        "label": "Use Monospace Font"
+      },
+      "noPills": {
+        "label": "Plain Style"
+      },
+      "useFullWidth": {
+        "label": "Force maximum width"
+      },
+      "hideInCombat": {
+        "label": "Hide During Combat"
+      },
+      "topOffset": {
+        "label": "Top Margin (px)"
+      },
+      "hideExpired": {
+        "label": "Hide Expired Events"
+      },
+      "copyButton": {
+        "label": "Copy from current configuration (Save and reopen for formatting)"
+      },
+      "customCalendar": {
+        "label": "Custom Calendar JSON",
+        "hint": "JSON Definition for the custom calendar. No support is provided for the custom calendar or on how to setup the JSON file. You can find some sample calendars on the wiki.",
+        "error": "Invalid JSON format for the custom calendar, setting has been reverted to the previous state. Please check the console for more details."
+      },
+      "useCustomMoons": {
+        "label": "Customize Moons"
+      },
+      "customMoons": {
+        "label": "Custom Moons JSON",
+        "hint": "JSON Definition for the custom moons. While moons can also be defined in the calendar JSON, this allows you to override the moons without having to change the calendar JSON in cases where, for example, you are using a calendar defined by the system or another module and you want to add moons to it. No support is provided for the custom moons or on how to setup the JSON file see the wiki for examples.",
+        "error": "Invalid JSON format for the custom moons, setting has been reverted to the previous state. Please check the console for more details."
+      },
+      "climateData": {
+        "label": "Climate Data",
+        "hint": "JSON Definition for the weather and temperature generation. No support is provided for the custom climate or on how to setup the JSON file."
+      },
+      "customBadge": {
+        "label": "Custom Badge"
+      },
+      "calendar": {
+        "label": "Calendar",
+        "hint": "Custom calendar as defined in the Custom Calendar JSON",
+        "default": "System Default",
+        "custom": "Custom"
+      },
+      "moonLabel": {
+        "label": "Moon Phase Label"
+      },
+      "moonColor": {
+        "label": "Moon Phase Color"
+      },
+      "moonAutomation": {
+        "label": "Moon Phase Automation",
+        "hint": "If moons are defined in the calendar, PF2e Timekeeping will automatically update the moon badge with the current moon phase."
+      },
+      "weatherLabel": {
+        "label": "Weather Label"
+      },
+      "weatherOverlay": {
+        "label": "Weather Animation"
+      },
+      "weatherColor": {
+        "label": "Weather Color"
+      },
+      "showFullDate": {
+        "label": "Show full date badge"
+      },
+      "daysDisplay": {
+        "label": "Days Display",
+        "options": {
+          "none": "None",
+          "sinceEpoch": "Since Start of Calendar",
+          "dayOfYear": "Day of Year"
+        }
+      },
+      "dayOffset": {
+        "label": "Start Day Offset",
+        "hint": "Offset to apply to the number of days when using the 'Since Start of Calendar' option in 'Days Display'"
+      },
+      "dawn": {
+        "label": "Dawn",
+        "hint": "Time of day in percentage, for example if your day is 24 hours, 0.5 would be 12:00 and 0.25 would be 06:00"
+      },
+      "dusk": {
+        "label": "Dusk",
+        "hint": "Time of day in percentage, for example if your day is 24 hours, 0.5 would be 12:00 and 0.75 would be 18:00"
+      },
+      "latitude": {
+        "label": "Climate Zone",
+        "hint": "Select the climate zone for your world. If set it will be used to generate weather, temperature and dawn/dusk times (ignoring other dawn/dusk settings)",
+        "options": {
+          "disabled": "Disabled",
+          "equatorial": "Equatorial",
+          "tropical": "Tropical",
+          "subtropical": "Subtropical",
+          "hotDesert": "Hot Desert",
+          "mediterranean": "Mediterranean",
+          "temperate": "Temperate",
+          "coolTemperate": "Cool Temperate",
+          "subpolar": "Subpolar",
+          "boreal": "Boreal"
+        }
+      },
+      "genWeather": {
+        "label": "Generate Weather",
+        "hint": "Generate a new weather every day. Uses Climate Zone to determine the climate.",
+        "options": {
+          "no": "No",
+          "noTemp": "Yes (No Temperature)",
+          "tempC": "Yes + Celsius",
+          "tempF": "Yes + Fahrenheit"
+        }
+      },
+      "dayColor": {
+        "label": "Day Tint"
+      },
+      "nightColor": {
+        "label": "Night Tint"
+      },
+      "hueIntensity": {
+        "label": "Scene Tint Intensity",
+        "hint": "When PF2e Timekeeping sets a darkness level, it will also apply a tint to the scene based on the day and night colors."
+      },
+      "badgeLabel": {
+        "label": "Label"
+      },
+      "badgeColor": {
+        "label": "Color"
+      },
+      "secondsPerRound": {
+        "label": "Seconds per Combat Round"
+      },
+      "secondsPerRealSecond": {
+        "label": "Second per Real Time second"
+      },
+      "journalEntryEvents": {
+        "label": "Events Journal Entry Name"
+      },
+      "clockSeconds": {
+        "label": "Update Frequency (seconds)"
+      },
+      "setDateTime": {
+        "label": "Set current Date/Time"
+      },
+      "darknessSync": {
+        "label": "Sync Scene Darkness and Weather",
+        "hint": "Whether scene darkness and weather should be set automatically based on the current time and weather. This option can also be configured per scene at the bottom of the lighting tab.",
+        "options": {
+          "default": "Use Global Default",
+          "sync": "Sync Weather & Darkness",
+          "noSync": "Don't Sync",
+          "weatherOnly": "Sync Weather Only",
+          "darknessOnly": "Sync Darkness Only"
+        }
+      },
+      "pf2eNotice": "PF2e Timekeeping uses its own calendar. The PF2e system clock may show a different date. Choose one way to control lighting for each scene."
+    },
+    "app": {
+      "searchEvents": "Search Events",
+      "create-event": {
+        "eventTime": {
+          "label": "Event Start"
+        },
+        "eventEnd": {
+          "label": "Event End (optional)"
+        },
+        "duration": {
+          "label": "Event Duration (hours)"
+        },
+        "edit": {
+          "label": "Edit Event Date/Time"
+        },
+        "repeat": {
+          "label": "Repeat",
+          "options": {
+            "none": "Do not repeat",
+            "day": "Every Day",
+            "week": "Every Week",
+            "month": "Every Month",
+            "year": "Every Year"
+          }
+        }
+      },
+      "controls": {
+        "create-event": {
+          "tooltip": "Create Event"
+        },
+        "day-back": {
+          "tooltip": "Back one Day (Ctrl 1 week, Shift 3 days, Alt 2 days)"
+        },
+        "hour-back": {
+          "tooltip": "Back one Hour (Ctrl 30min, Shift 10min, Alt 5min)"
+        },
+        "hour-forward": {
+          "tooltip": "Advance one Hour (Ctrl 30min, Shift 10min, Alt 5min)"
+        },
+        "day-forward": {
+          "tooltip": "Advance one Day (Ctrl 1 week, Shift 3 days, Alt 2 days)"
+        },
+        "sunrise": {
+          "tooltip": "Sunrise"
+        },
+        "sunset": {
+          "tooltip": "Sunset"
+        },
+        "midday": {
+          "tooltip": "Midday"
+        },
+        "midnight": {
+          "tooltip": "Midnight"
+        },
+        "configure": {
+          "tooltip": "Configure"
+        },
+        "toggle-events": {
+          "tooltip": "Events"
+        }
+      },
+      "weather": {
+        "generate": "Generate"
+      }
+    },
+    "flags": {},
+    "actions": {
+      "save": "Save",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "help": "Help and examples"
+    },
+    "defaults": {
+      "weather": "Weather",
+      "moon": "Moon",
+      "newEvent": "New Event",
+      "missingSeasons": "Seasons not defined"
+    },
+    "date": {
+      "title": "Set Date and Time",
+      "year": "Year",
+      "month": "Month",
+      "day": "Day",
+      "hour": "Hour",
+      "minute": "Minute",
+      "am": "AM",
+      "pm": "PM",
+      "yearSeparator": ", "
+    },
+    "dayCount": {
+      "one": "{count} day",
+      "few": "{count} days",
+      "many": "{count} days",
+      "other": "{count} days"
+    },
+    "errors": {
+      "calendarJSON": "PF2e Timekeeping: could not read the calendar. Check the JSON format in module settings.",
+      "calendarDays": "PF2e Timekeeping: the calendar specifies {declared} days per year, but its months add up to {actual}. Correct the calendar description.",
+      "calendarApply": "PF2e Timekeeping: could not apply the custom calendar. Check its description in module settings.",
+      "moonsJSON": "PF2e Timekeeping: could not read the moons. Check the JSON format in module settings.",
+      "climateJSON": "PF2e Timekeeping: could not read the climate data. Using the default climate.",
+      "badgeNumber": "Badge number must be between 1 and {max}.",
+      "date": "Could not display the date. Check the calendar settings.",
+      "action": "This action is not available: {action}."
+    },
+    "calendars": {
+      "athasian": {
+        "name": "Athasian (Dark Sun)",
+        "description": "The Athasian calendar used in the Dark Sun setting. It has 10 months of 36 days each, with 5 festival days.",
+        "months": {
+          "0": {
+            "name": "Sorrow",
+            "abbreviation": "Sor",
+            "date": "Sorrow"
+          },
+          "1": {
+            "name": "Sunbirth",
+            "abbreviation": "Sun",
+            "date": "Sunbirth"
+          },
+          "2": {
+            "name": "Ral's Rest",
+            "abbreviation": "Ral",
+            "date": "Ral's Rest"
+          },
+          "3": {
+            "name": "Windfury",
+            "abbreviation": "Win",
+            "date": "Windfury"
+          },
+          "4": {
+            "name": "Sea's Fury",
+            "abbreviation": "Sea",
+            "date": "Sea's Fury"
+          },
+          "5": {
+            "name": "Sun Descending",
+            "abbreviation": "Des",
+            "date": "Sun Descending"
+          },
+          "6": {
+            "name": "Fireseek",
+            "abbreviation": "Fir",
+            "date": "Fireseek"
+          },
+          "7": {
+            "name": "Dragon's Rest",
+            "abbreviation": "Dra",
+            "date": "Dragon's Rest"
+          },
+          "8": {
+            "name": "Smoldering",
+            "abbreviation": "Smo",
+            "date": "Smoldering"
+          },
+          "9": {
+            "name": "Cooling",
+            "abbreviation": "Coo",
+            "date": "Cooling"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Firstday",
+            "abbreviation": "F1"
+          },
+          "1": {
+            "name": "Secondday",
+            "abbreviation": "F2"
+          },
+          "2": {
+            "name": "Thirdday",
+            "abbreviation": "F3"
+          },
+          "3": {
+            "name": "Fourthday",
+            "abbreviation": "F4"
+          },
+          "4": {
+            "name": "Fifthday",
+            "abbreviation": "F5"
+          },
+          "5": {
+            "name": "Sixthday",
+            "abbreviation": "F6"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Missing Seasons"
+          }
+        },
+        "moons": {}
+      },
+      "barovian": {
+        "name": "Barovian (Curse of Strahd)",
+        "description": "The calendar used in the cursed land of Barovia, featured in the Curse of Strahd campaign. It features 12 months, each with 28 days.",
+        "months": {
+          "0": {
+            "name": "Yinyavr (Cold Moon)",
+            "abbreviation": "Yin",
+            "date": "Yinyavr (Cold Moon)"
+          },
+          "1": {
+            "name": "Fenravr (Wolf Moon)",
+            "abbreviation": "Fen",
+            "date": "Fenravr (Wolf Moon)"
+          },
+          "2": {
+            "name": "Martavr (Raven Moon)",
+            "abbreviation": "Mar",
+            "date": "Martavr (Raven Moon)"
+          },
+          "3": {
+            "name": "Prylla (Rain Moon)",
+            "abbreviation": "Pry",
+            "date": "Prylla (Rain Moon)"
+          },
+          "4": {
+            "name": "Mada (Maid Moon)",
+            "abbreviation": "Mad",
+            "date": "Mada (Maid Moon)"
+          },
+          "5": {
+            "name": "Eyun (Summer Moon)",
+            "abbreviation": "Eyu",
+            "date": "Eyun (Summer Moon)"
+          },
+          "6": {
+            "name": "Eyul (War Moon)",
+            "abbreviation": "Eyl",
+            "date": "Eyul (War Moon)"
+          },
+          "7": {
+            "name": "Ugavr (Wine Moon)",
+            "abbreviation": "Uga",
+            "date": "Ugavr (Wine Moon)"
+          },
+          "8": {
+            "name": "Sintavr (Harvest Moon)",
+            "abbreviation": "Sin",
+            "date": "Sintavr (Harvest Moon)"
+          },
+          "9": {
+            "name": "Ottyavr (Hunter's Moon)",
+            "abbreviation": "Ott",
+            "date": "Ottyavr (Hunter's Moon)"
+          },
+          "10": {
+            "name": "Neyavr (Rot Moon)",
+            "abbreviation": "Ney",
+            "date": "Neyavr (Rot Moon)"
+          },
+          "11": {
+            "name": "Dekavr (Winter Moon)",
+            "abbreviation": "Dek",
+            "date": "Dekavr (Winter Moon)"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Vasárnap",
+            "abbreviation": "1st"
+          },
+          "1": {
+            "name": "Hétfő",
+            "abbreviation": "2nd"
+          },
+          "2": {
+            "name": "Kedd",
+            "abbreviation": "3rd"
+          },
+          "3": {
+            "name": "Szerda",
+            "abbreviation": "4th"
+          },
+          "4": {
+            "name": "Csütörtök",
+            "abbreviation": "5th"
+          },
+          "5": {
+            "name": "Péntek",
+            "abbreviation": "6th"
+          },
+          "6": {
+            "name": "Szombat",
+            "abbreviation": "7th"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring",
+            "abbreviation": "Spr"
+          },
+          "1": {
+            "name": "Summer",
+            "abbreviation": "Sum"
+          },
+          "2": {
+            "name": "Autumn",
+            "abbreviation": "Aut"
+          },
+          "3": {
+            "name": "Winter",
+            "abbreviation": "Win"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Selûne"
+          }
+        }
+      },
+      "cerilian": {
+        "name": "Cerilian Reckoning (Birthright)",
+        "description": "The calendar of Cerilia, used in the Birthright setting. 12 months, 30 days each, plus festivals.",
+        "months": {
+          "0": {
+            "name": "Roelir",
+            "abbreviation": "Roel.",
+            "date": "Roelir"
+          },
+          "1": {
+            "name": "Haelynir",
+            "abbreviation": "Hael.",
+            "date": "Haelynir"
+          },
+          "2": {
+            "name": "Anarire",
+            "abbreviation": "Anar.",
+            "date": "Anarire"
+          },
+          "3": {
+            "name": "Talienir",
+            "abbreviation": "Tali.",
+            "date": "Talienir"
+          },
+          "4": {
+            "name": "Roele",
+            "abbreviation": "Roele",
+            "date": "Roele"
+          },
+          "5": {
+            "name": "Deismir",
+            "abbreviation": "Deis.",
+            "date": "Deismir"
+          },
+          "6": {
+            "name": "Erntenir",
+            "abbreviation": "Ernt.",
+            "date": "Erntenir"
+          },
+          "7": {
+            "name": "Sehnir",
+            "abbreviation": "Sehn.",
+            "date": "Sehnir"
+          },
+          "8": {
+            "name": "Emmanir",
+            "abbreviation": "Emma.",
+            "date": "Emmanir"
+          },
+          "9": {
+            "name": "Keltier",
+            "abbreviation": "Kelt.",
+            "date": "Keltier"
+          },
+          "10": {
+            "name": "Krylinir",
+            "abbreviation": "Kryl.",
+            "date": "Krylinir"
+          },
+          "11": {
+            "name": "Sidhevair",
+            "abbreviation": "Sidh.",
+            "date": "Sidhevair"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Sunday",
+            "abbreviation": "Sun"
+          },
+          "1": {
+            "name": "Moonday",
+            "abbreviation": "Moon"
+          },
+          "2": {
+            "name": "Earthday",
+            "abbreviation": "Earth"
+          },
+          "3": {
+            "name": "Wineday",
+            "abbreviation": "Wine"
+          },
+          "4": {
+            "name": "Stormday",
+            "abbreviation": "Storm"
+          },
+          "5": {
+            "name": "Kingsday",
+            "abbreviation": "King"
+          },
+          "6": {
+            "name": "Starday",
+            "abbreviation": "Star"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Missing Seasons"
+          }
+        },
+        "moons": {}
+      },
+      "commonyear": {
+        "name": "Common Year (Greyhawk)",
+        "description": "The Common Year calendar used in the World of Greyhawk setting, featuring 12 months of 28 days and four 7-day festivals.",
+        "months": {
+          "0": {
+            "name": "Fireseek",
+            "abbreviation": "Fir",
+            "date": "Fireseek"
+          },
+          "1": {
+            "name": "Readying",
+            "abbreviation": "Rea",
+            "date": "Readying"
+          },
+          "2": {
+            "name": "Coldeven",
+            "abbreviation": "Col",
+            "date": "Coldeven"
+          },
+          "3": {
+            "name": "Planting",
+            "abbreviation": "Pla",
+            "date": "Planting"
+          },
+          "4": {
+            "name": "Flocktime",
+            "abbreviation": "Flo",
+            "date": "Flocktime"
+          },
+          "5": {
+            "name": "Wealsun",
+            "abbreviation": "Wea",
+            "date": "Wealsun"
+          },
+          "6": {
+            "name": "Reaping",
+            "abbreviation": "Rea",
+            "date": "Reaping"
+          },
+          "7": {
+            "name": "Goodmonth",
+            "abbreviation": "Goo",
+            "date": "Goodmonth"
+          },
+          "8": {
+            "name": "Harvester",
+            "abbreviation": "Har",
+            "date": "Harvester"
+          },
+          "9": {
+            "name": "Patchwall",
+            "abbreviation": "Pat",
+            "date": "Patchwall"
+          },
+          "10": {
+            "name": "Ready'reat",
+            "abbreviation": "Rea",
+            "date": "Ready'reat"
+          },
+          "11": {
+            "name": "Sunsebb",
+            "abbreviation": "Sun",
+            "date": "Sunsebb"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Starday",
+            "abbreviation": "Sta"
+          },
+          "1": {
+            "name": "Sunday",
+            "abbreviation": "Sun"
+          },
+          "2": {
+            "name": "Moonday",
+            "abbreviation": "Mon"
+          },
+          "3": {
+            "name": "Godsday",
+            "abbreviation": "God"
+          },
+          "4": {
+            "name": "Waterday",
+            "abbreviation": "Wat"
+          },
+          "5": {
+            "name": "Earthday",
+            "abbreviation": "Ear"
+          },
+          "6": {
+            "name": "Freeday",
+            "abbreviation": "Fre"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Autumn"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {}
+      },
+      "ansalon": {
+        "name": "Dragonlance (Elves, Ansalon)",
+        "description": "The standard calendar used by the elves on the Ansalon continent, with 12 months of 28 days each. The Moons of Magic orbit around the world of Krynn, their cycle affecting Wizards of High Sorcery. The moon's cycle are named after how mages are affected.",
+        "months": {
+          "0": {
+            "name": "Winter Night",
+            "date": "Winter Night"
+          },
+          "1": {
+            "name": "Winter Deep",
+            "date": "Winter Deep"
+          },
+          "2": {
+            "name": "Spring Dawning",
+            "date": "Spring Dawning"
+          },
+          "3": {
+            "name": "Spring Rain",
+            "date": "Spring Rain"
+          },
+          "4": {
+            "name": "Spring Blossom",
+            "date": "Spring Blossom"
+          },
+          "5": {
+            "name": "Summer Home",
+            "date": "Summer Home"
+          },
+          "6": {
+            "name": "Summer Run",
+            "date": "Summer Run"
+          },
+          "7": {
+            "name": "Summer End",
+            "date": "Summer End"
+          },
+          "8": {
+            "name": "Autumn Harvest",
+            "date": "Autumn Harvest"
+          },
+          "9": {
+            "name": "Autumn Twilight",
+            "date": "Autumn Twilight"
+          },
+          "10": {
+            "name": "Autumn Dark",
+            "date": "Autumn Dark"
+          },
+          "11": {
+            "name": "Winter Come",
+            "date": "Winter Come"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Gateway"
+          },
+          "1": {
+            "name": "Bright Eye"
+          },
+          "2": {
+            "name": "Night's Eye "
+          },
+          "3": {
+            "name": "Dead Eye"
+          },
+          "4": {
+            "name": "Dream Dance"
+          },
+          "5": {
+            "name": "Winged Trade"
+          },
+          "6": {
+            "name": "World Tree"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Missing Seasons"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Solinari",
+            "abbreviation": "Sol",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
             }
-        },
-        "weather": {
-            "clear": "Clear",
-            "partlyCloudy": "Partly Cloudy",
-            "cloudy": "Cloudy",
-            "overcast": "Overcast",
-            "rain": "Rain",
-            "thunderstorm": "Thunderstorm",
-            "drizzle": "Drizzle",
-            "snow": "Snow",
-            "blizzard": "Blizzard",
-            "hail": "Hail",
-            "fog": "Fog",
-            "mist": "Mist",
-            "windy": "Windy",
-            "tornado": "Tornado",
-            "hurricane": "Hurricane",
-            "ashfall": "Ashfall",
-            "sandstorm": "Sandstorm",
-            "luminousSky": "Luminous Sky",
-            "bloodRain": "Blood Rain",
-            "manaStorm": "Mana Storm",
-            "arcaneFog": "Arcane Fog",
-            "voidstorm": "Voidstorm",
-            "celestialEclipse": "Celestial Eclipse",
-            "meteorShower": "Meteor Shower",
-            "frozenHell": "Frozen Hell",
-            "sunshower": "Sunshower",
-            "spectralStorm": "Spectral Storm",
-            "etherealDrizzle": "Ethereal Drizzle",
-            "wildMagicWinds": "Wild Magic Winds"
-        },
-        "moonPhase": {
-            "new": "New Moon",
-            "waxingCrescent": "Waxing Crescent",
-            "firstQuarter": "First Quarter",
-            "waxingGibbous": "Waxing Gibbous",
-            "full": "Full Moon",
-            "waningGibbous": "Waning Gibbous",
-            "lastQuarter": "Last Quarter",
-            "waningCrescent": "Waning Crescent",
-            "bloodMoon": "Blood Moon",
-            "eclipse": "Eclipse",
-            "voidMoon": "Void Moon",
-            "twinMoons": "Twin Moons",
-            "manaMoon": "Mana Moon",
-            "celestialAlignment": "Celestial Alignment",
-            "shatteredMoon": "Shattered Moon",
-            "spiritMoon": "Spirit Moon"
-        },
-        "configuration": {
-            "title": "Configuration Menu",
-            "firstTimeTitle": "First Time Setup",
-            "tabs": {
-                "configuration": "Configuration",
-                "visibility": "Visibility",
-                "aspect": "Aspect",
-                "badges": "Badges",
-                "time": "Time",
-                "calendar": "Calendar",
-                "automation": "Automation",
-                "environment": "Environment"
-            },
-            "seasons": {
-                "label": "Season Colors"
-            },
-            "macrosFieldset": {
-                "label": "Automation Macros",
-                "hint": "Macros to run at specific times of day. The macros will be executed for all connected users that have permissions to run it."
-            },
-            "newDayMacros": {
-                "label": "New Day Macros"
-            },
-            "dawnMacros": {
-                "label": "Dawn Macros"
-            },
-            "duskMacros": {
-                "label": "Dusk Macros"
-            },
-            "middayMacros": {
-                "label": "Midday Macros"
-            },
-            "use24HourClock": {
-                "label": "Use 24 Hour Clock"
-            },
-            "wideLetterSpacing": {
-                "label": "Wide Letter Spacing"
-            },
-            "useMonospace": {
-                "label": "Use Monospace Font"
-            },
-            "noPills": {
-                "label": "Plain Style"
-            },
-            "useFullWidth": {
-                "label": "Force maximum width"
-            },
-            "hideInCombat": {
-                "label": "Hide During Combat"
-            },
-            "topOffset": {
-                "label": "Top Margin (px)"
-            },
-            "hideExpired": {
-                "label": "Hide Expired Events"
-            },
-            "copyButton": {
-                "label": "Copy from current configuration (Save and reopen for formatting)"
-            },
-            "customCalendar": {
-                "label": "Custom Calendar JSON",
-                "hint": "JSON Definition for the custom calendar. No support is provided for the custom calendar or on how to setup the JSON file. You can find some sample calendars on the wiki.",
-                "error": "Invalid JSON format for the custom calendar, setting has been reverted to the previous state. Please check the console for more details."
-            },
-            "useCustomMoons": {
-                "label": "Customize Moons"
-            },
-            "customMoons": {
-                "label": "Custom Moons JSON",
-                "hint": "JSON Definition for the custom moons. While moons can also be defined in the calendar JSON, this allows you to override the moons without having to change the calendar JSON in cases where, for example, you are using a calendar defined by the system or another module and you want to add moons to it. No support is provided for the custom moons or on how to setup the JSON file see the wiki for examples.",
-                "error": "Invalid JSON format for the custom moons, setting has been reverted to the previous state. Please check the console for more details."
-            },
-            "climateData": {
-                "label": "Climate Data",
-                "hint": "JSON Definition for the weather and temperature generation. No support is provided for the custom climate or on how to setup the JSON file."
-            },
-            "customBadge": {
-                "label": "Custom Badge"
-            },
-            "calendar": {
-                "label": "Calendar",
-                "hint": "Custom calendar as defined in the Custom Calendar JSON",
-                "default": "System Default",
-                "custom": "Custom"
-            },
-            "moonLabel": {
-                "label": "Moon Phase Label"
-            },
-            "moonColor": {
-                "label": "Moon Phase Color"
-            },
-            "moonAutomation": {
-                "label": "Moon Phase Automation",
-                "hint": "If moons are defined in the calendar, PF2e Timekeeping will automatically update the moon badge with the current moon phase."
-            },
-            "weatherLabel": {
-                "label": "Weather Label"
-            },
-            "weatherOverlay": {
-                "label": "Weather Animation"
-            },
-            "weatherColor": {
-                "label": "Weather Color"
-            },
-            "showFullDate": {
-                "label": "Show full date badge"
-            },
-            "daysDisplay": {
-                "label": "Days Display",
-                "options": {
-                    "none": "None",
-                    "sinceEpoch": "Since Start of Calendar",
-                    "dayOfYear": "Day of Year"
-                }
-            },
-            "dayOffset": {
-                "label": "Start Day Offset",
-                "hint": "Offset to apply to the number of days when using the 'Since Start of Calendar' option in 'Days Display'"
-            },
-            "dawn": {
-                "label": "Dawn",
-                "hint": "Time of day in percentage, for example if your day is 24 hours, 0.5 would be 12:00 and 0.25 would be 06:00"
-            },
-            "dusk": {
-                "label": "Dusk",
-                "hint": "Time of day in percentage, for example if your day is 24 hours, 0.5 would be 12:00 and 0.75 would be 18:00"
-            },
-            "latitude": {
-                "label": "Climate Zone",
-                "hint": "Select the climate zone for your world. If set it will be used to generate weather, temperature and dawn/dusk times (ignoring other dawn/dusk settings)",
-                "options": {
-                    "disabled": "Disabled",
-                    "equatorial": "Equatorial",
-                    "tropical": "Tropical",
-                    "subtropical": "Subtropical",
-                    "hotDesert": "Hot Desert",
-                    "mediterranean": "Mediterranean",
-                    "temperate": "Temperate",
-                    "coolTemperate": "Cool Temperate",
-                    "subpolar": "Subpolar",
-                    "boreal": "Boreal"
-                }
-            },
-            "genWeather": {
-                "label": "Generate Weather",
-                "hint": "Generate a new weather every day. Uses Climate Zone to determine the climate.",
-                "options": {
-                    "no": "No",
-                    "noTemp": "Yes (No Temperature)",
-                    "tempC": "Yes + Celsius",
-                    "tempF": "Yes + Fahrenheit"
-                }
-            },
-            "dayColor": {
-                "label": "Day Tint"
-            },
-            "nightColor": {
-                "label": "Night Tint"
-            },
-            "hueIntensity": {
-                "label": "Scene Tint Intensity",
-                "hint": "When PF2e Timekeeping sets a darkness level, it will also apply a tint to the scene based on the day and night colors."
-            },
-            "badgeLabel": {
-                "label": "Label"
-            },
-            "badgeColor": {
-                "label": "Color"
-            },
-            "secondsPerRound": {
-                "label": "Seconds per Combat Round"
-            },
-            "secondsPerRealSecond": {
-                "label": "Second per Real Time second"
-            },
-            "journalEntryEvents": {
-                "label": "Events Journal Entry Name"
-            },
-            "clockSeconds": {
-                "label": "Update Frequency (seconds)"
-            },
-            "setDateTime": {
-                "label": "Set current Date/Time"
-            },
-            "darknessSync": {
-                "label": "Sync Scene Darkness and Weather",
-                "hint": "Whether scene darkness and weather should be set automatically based on the current time and weather. This option can also be configured per scene at the bottom of the lighting tab.",
-                "options": {
-                    "default": "Use Global Default",
-                    "sync": "Sync Weather & Darkness",
-                    "noSync": "Don't Sync",
-                    "weatherOnly": "Sync Weather Only",
-                    "darknessOnly": "Sync Darkness Only"
-                }
+          },
+          "1": {
+            "name": "Lunitari",
+            "abbreviation": "Lun",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
             }
-        },
-        "app": {
-            "searchEvents": "Search Events",
-            "create-event": {
-                "eventTime": {
-                    "label": "Event Start"
-                },
-                "eventEnd": {
-                    "label": "Event End (optional)"
-                },
-                "duration": {
-                    "label": "Event Duration (hours)"
-                },
-                "edit": {
-                    "label": "Edit Event Date/Time"
-                },
-                "repeat": {
-                    "label": "Repeat",
-                    "options": {
-                        "none": "Do not repeat",
-                        "day": "Every Day",
-                        "week": "Every Week",
-                        "month": "Every Month",
-                        "year": "Every Year"
-                    }
-                }
-            },
-            "controls": {
-                "create-event": {
-                    "tooltip": "Create Event"
-                },
-                "day-back": {
-                    "tooltip": "Back one Day (Ctrl 1 week, Shift 3 days, Alt 2 days)"
-                },
-                "hour-back": {
-                    "tooltip": "Back one Hour (Ctrl 30min, Shift 10min, Alt 5min)"
-                },
-                "hour-forward": {
-                    "tooltip": "Advance one Hour (Ctrl 30min, Shift 10min, Alt 5min)"
-                },
-                "day-forward": {
-                    "tooltip": "Advance one Day (Ctrl 1 week, Shift 3 days, Alt 2 days)"
-                },
-                "sunrise": {
-                    "tooltip": "Sunrise"
-                },
-                "sunset": {
-                    "tooltip": "Sunset"
-                },
-                "midday": {
-                    "tooltip": "Midday"
-                },
-                "midnight": {
-                    "tooltip": "Midnight"
-                },
-                "configure": {
-                    "tooltip": "Configure"
-                },
-                "toggle-events": {
-                    "tooltip": "Events"
-                }
-            },
-            "weather": {
-                "generate": "Generate"
+          },
+          "2": {
+            "name": "Nuitari",
+            "abbreviation": "Nui",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
             }
+          }
+        }
+      },
+      "drag_solamnia": {
+        "name": "Dragonlance (Solamnia, Ansalon)",
+        "description": "The standard calendar used in Solamnia on the Ansalon continent, with 12 months of 28 days each. The Moons of Magic orbit around the world of Krynn, their cycle affecting Wizards of High Sorcery. The moon's cycle are named after how mages are affected.",
+        "months": {
+          "0": {
+            "name": "Newkolt",
+            "date": "Newkolt"
+          },
+          "1": {
+            "name": "Deepkolt",
+            "date": "Deepkolt"
+          },
+          "2": {
+            "name": "Brookgreen",
+            "date": "Brookgreen"
+          },
+          "3": {
+            "name": "Yurthgreen",
+            "date": "Yurthgreen"
+          },
+          "4": {
+            "name": "Fleurgreen",
+            "date": "Fleurgreen"
+          },
+          "5": {
+            "name": "Holmswelth",
+            "date": "Holmswelth"
+          },
+          "6": {
+            "name": "Fierswelt",
+            "date": "Fierswelt"
+          },
+          "7": {
+            "name": "Paleswelt",
+            "date": "Paleswelt"
+          },
+          "8": {
+            "name": "Reapember",
+            "date": "Reapember"
+          },
+          "9": {
+            "name": "Gildember",
+            "date": "Gildember"
+          },
+          "10": {
+            "name": "Darkember",
+            "date": "Darkember"
+          },
+          "11": {
+            "name": "Frostkolt",
+            "date": "Frostkolt"
+          }
         },
-        "flags": {}
+        "days": {
+          "0": {
+            "name": "Linaras"
+          },
+          "1": {
+            "name": "Palast"
+          },
+          "2": {
+            "name": "Majetag"
+          },
+          "3": {
+            "name": "Kirinor"
+          },
+          "4": {
+            "name": "Misham"
+          },
+          "5": {
+            "name": "Bakukal"
+          },
+          "6": {
+            "name": "Bracha"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Missing Seasons"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Solinari",
+            "abbreviation": "Sol",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
+            }
+          },
+          "1": {
+            "name": "Lunitari",
+            "abbreviation": "Lun",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
+            }
+          },
+          "2": {
+            "name": "Nuitari",
+            "abbreviation": "Nui",
+            "phases": {
+              "0": "Low Sanction",
+              "1": "Waxing",
+              "2": "High Sanction",
+              "3": "Waning"
+            }
+          }
+        }
+      },
+      "drakkenheim": {
+        "name": "Drakkenheim (Drakkenheim)",
+        "description": "The calendar used in the Drakkenheim setting, based on the Gregorian calendar with unique names for days and months.",
+        "months": {
+          "0": {
+            "name": "Threshold",
+            "abbreviation": "Thr",
+            "date": "Threshold"
+          },
+          "1": {
+            "name": "Thawing",
+            "abbreviation": "Tha",
+            "date": "Thawing"
+          },
+          "2": {
+            "name": "Springtide",
+            "abbreviation": "Spr",
+            "date": "Springtide"
+          },
+          "3": {
+            "name": "Hearthstone",
+            "abbreviation": "Hea",
+            "date": "Hearthstone"
+          },
+          "4": {
+            "name": "Sowing",
+            "abbreviation": "Sow",
+            "date": "Sowing"
+          },
+          "5": {
+            "name": "Highsummer",
+            "abbreviation": "Hig",
+            "date": "Highsummer"
+          },
+          "6": {
+            "name": "Midyear",
+            "abbreviation": "Mid",
+            "date": "Midyear"
+          },
+          "7": {
+            "name": "Sunbreak",
+            "abbreviation": "Sun",
+            "date": "Sunbreak"
+          },
+          "8": {
+            "name": "Autumntide",
+            "abbreviation": "Aut",
+            "date": "Autumntide"
+          },
+          "9": {
+            "name": "Reaping",
+            "abbreviation": "Rea",
+            "date": "Reaping"
+          },
+          "10": {
+            "name": "Rimewind",
+            "abbreviation": "Rim",
+            "date": "Rimewind"
+          },
+          "11": {
+            "name": "Midwinter",
+            "abbreviation": "Miw",
+            "date": "Midwinter"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Moonday",
+            "abbreviation": "Mon"
+          },
+          "1": {
+            "name": "Tidesday",
+            "abbreviation": "Tid"
+          },
+          "2": {
+            "name": "Windsday",
+            "abbreviation": "Win"
+          },
+          "3": {
+            "name": "Earthsday",
+            "abbreviation": "Tde"
+          },
+          "4": {
+            "name": "Fireday",
+            "abbreviation": "Fir"
+          },
+          "5": {
+            "name": "Starsday",
+            "abbreviation": "Sta"
+          },
+          "6": {
+            "name": "Sunday",
+            "abbreviation": "Sun"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Fall"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Moon"
+          }
+        }
+      },
+      "exandrian": {
+        "name": "Exandrian (Exandria)",
+        "description": "A calendar with 328 days over 11 months, used across Exandria. It features a 7-day week and seasonal shifts based on the northern hemisphere.",
+        "months": {
+          "0": {
+            "name": "Horisal",
+            "abbreviation": "Hor",
+            "date": "Horisal"
+          },
+          "1": {
+            "name": "Misuthar",
+            "abbreviation": "Mis",
+            "date": "Misuthar"
+          },
+          "2": {
+            "name": "Dualahei",
+            "abbreviation": "Dua",
+            "date": "Dualahei"
+          },
+          "3": {
+            "name": "Thunsheer",
+            "abbreviation": "Thu",
+            "date": "Thunsheer"
+          },
+          "4": {
+            "name": "Unndilar",
+            "abbreviation": "Unn",
+            "date": "Unndilar"
+          },
+          "5": {
+            "name": "Brussendar",
+            "abbreviation": "Bru",
+            "date": "Brussendar"
+          },
+          "6": {
+            "name": "Sydenstar",
+            "abbreviation": "Syd",
+            "date": "Sydenstar"
+          },
+          "7": {
+            "name": "Fessuran",
+            "abbreviation": "Fes",
+            "date": "Fessuran"
+          },
+          "8": {
+            "name": "Quen'pillar",
+            "abbreviation": "Que",
+            "date": "Quen'pillar"
+          },
+          "9": {
+            "name": "Cuersaar",
+            "abbreviation": "Cue",
+            "date": "Cuersaar"
+          },
+          "10": {
+            "name": "Duscar",
+            "abbreviation": "Dus",
+            "date": "Duscar"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Miresen",
+            "abbreviation": "Mir"
+          },
+          "1": {
+            "name": "Grissen",
+            "abbreviation": "Gri"
+          },
+          "2": {
+            "name": "Whelsen",
+            "abbreviation": "Whe"
+          },
+          "3": {
+            "name": "Conthsen",
+            "abbreviation": "Con"
+          },
+          "4": {
+            "name": "Folsen",
+            "abbreviation": "Fol"
+          },
+          "5": {
+            "name": "Yulisen",
+            "abbreviation": "Yul"
+          },
+          "6": {
+            "name": "Da'leysen",
+            "abbreviation": "Dal"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Autumn"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Ruidus"
+          },
+          "1": {
+            "name": "Catha"
+          }
+        }
+      },
+      "forbiddenlands": {
+        "name": "Forbidden Lands Calendar",
+        "description": "The human celandar of the Forbidden Lands. Eight seasons with a seven day week and a moon.",
+        "months": {
+          "0": {
+            "name": "Springrise",
+            "date": "Springrise"
+          },
+          "1": {
+            "name": "Springwane",
+            "date": "Springwane"
+          },
+          "2": {
+            "name": "Summerrise",
+            "date": "Summerrise"
+          },
+          "3": {
+            "name": "Summerwane",
+            "date": "Summerwane"
+          },
+          "4": {
+            "name": "Fallrise",
+            "date": "Fallrise"
+          },
+          "5": {
+            "name": "Fallwane",
+            "date": "Fallwane"
+          },
+          "6": {
+            "name": "Winterrise",
+            "date": "Winterrise"
+          },
+          "7": {
+            "name": "Winterwane",
+            "date": "Winterwane"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Sunday"
+          },
+          "1": {
+            "name": "Moonday"
+          },
+          "2": {
+            "name": "Bloodday"
+          },
+          "3": {
+            "name": "Earthday"
+          },
+          "4": {
+            "name": "Growthday"
+          },
+          "5": {
+            "name": "Feastday"
+          },
+          "6": {
+            "name": "Stillday"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Fall"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Nightwalker"
+          }
+        }
+      },
+      "galifar": {
+        "name": "Galifar (Eberron)",
+        "description": "The calendar used in Eberron, featuring 12 months of 28 days and a consistent 7-day week with no leap years or intercalary days.",
+        "months": {
+          "0": {
+            "name": "Zarantyr",
+            "abbreviation": "Zar",
+            "date": "Zarantyr"
+          },
+          "1": {
+            "name": "Olarune",
+            "abbreviation": "Ola",
+            "date": "Olarune"
+          },
+          "2": {
+            "name": "Therendor",
+            "abbreviation": "The",
+            "date": "Therendor"
+          },
+          "3": {
+            "name": "Eyre",
+            "abbreviation": "Eyr",
+            "date": "Eyre"
+          },
+          "4": {
+            "name": "Dravago",
+            "abbreviation": "Dra",
+            "date": "Dravago"
+          },
+          "5": {
+            "name": "Nymm",
+            "abbreviation": "Nym",
+            "date": "Nymm"
+          },
+          "6": {
+            "name": "Lharvion",
+            "abbreviation": "Lha",
+            "date": "Lharvion"
+          },
+          "7": {
+            "name": "Barrakas",
+            "abbreviation": "Bar",
+            "date": "Barrakas"
+          },
+          "8": {
+            "name": "Rhaan",
+            "abbreviation": "Rha",
+            "date": "Rhaan"
+          },
+          "9": {
+            "name": "Sypheros",
+            "abbreviation": "Syp",
+            "date": "Sypheros"
+          },
+          "10": {
+            "name": "Aryth",
+            "abbreviation": "Ary",
+            "date": "Aryth"
+          },
+          "11": {
+            "name": "Vult",
+            "abbreviation": "Vul",
+            "date": "Vult"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Sul",
+            "abbreviation": "Sul"
+          },
+          "1": {
+            "name": "Mol",
+            "abbreviation": "Mol"
+          },
+          "2": {
+            "name": "Zol",
+            "abbreviation": "Zol"
+          },
+          "3": {
+            "name": "Wir",
+            "abbreviation": "Wir"
+          },
+          "4": {
+            "name": "Zor",
+            "abbreviation": "Zor"
+          },
+          "5": {
+            "name": "Far",
+            "abbreviation": "Far"
+          },
+          "6": {
+            "name": "Sar",
+            "abbreviation": "Sar"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Autumn"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {}
+      },
+      "golarion": {
+        "name": "Golarion (Pathfinder)",
+        "description": "The Absalom Reckoning calendar used in the Pathfinder setting, featuring 12 months with varying lengths and a 7-day week.",
+        "months": {
+          "0": {
+            "name": "Abadius",
+            "abbreviation": "Abad",
+            "date": "Abadius"
+          },
+          "1": {
+            "name": "Calistril",
+            "abbreviation": "Cal",
+            "date": "Calistril"
+          },
+          "2": {
+            "name": "Pharast",
+            "abbreviation": "Phar",
+            "date": "Pharast"
+          },
+          "3": {
+            "name": "Gozran",
+            "abbreviation": "Goz",
+            "date": "Gozran"
+          },
+          "4": {
+            "name": "Desnus",
+            "abbreviation": "Des",
+            "date": "Desnus"
+          },
+          "5": {
+            "name": "Sarenith",
+            "abbreviation": "Sar",
+            "date": "Sarenith"
+          },
+          "6": {
+            "name": "Erastus",
+            "abbreviation": "Era",
+            "date": "Erastus"
+          },
+          "7": {
+            "name": "Arodus",
+            "abbreviation": "Aro",
+            "date": "Arodus"
+          },
+          "8": {
+            "name": "Rova",
+            "abbreviation": "Rov",
+            "date": "Rova"
+          },
+          "9": {
+            "name": "Lamashan",
+            "abbreviation": "Lam",
+            "date": "Lamashan"
+          },
+          "10": {
+            "name": "Neth",
+            "abbreviation": "Neth",
+            "date": "Neth"
+          },
+          "11": {
+            "name": "Kuthona",
+            "abbreviation": "Kuth",
+            "date": "Kuthona"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Moonday",
+            "abbreviation": "Mon"
+          },
+          "1": {
+            "name": "Toilday",
+            "abbreviation": "Tue"
+          },
+          "2": {
+            "name": "Wealday",
+            "abbreviation": "Wed"
+          },
+          "3": {
+            "name": "Oathday",
+            "abbreviation": "Thu"
+          },
+          "4": {
+            "name": "Fireday",
+            "abbreviation": "Fri"
+          },
+          "5": {
+            "name": "Starday",
+            "abbreviation": "Sat"
+          },
+          "6": {
+            "name": "Sunday",
+            "abbreviation": "Sun"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Winter"
+          },
+          "1": {
+            "name": "Spring"
+          },
+          "2": {
+            "name": "Summer"
+          },
+          "3": {
+            "name": "Autumn"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Somal"
+          }
+        }
+      },
+      "harptos": {
+        "name": "Harptos (Forgotten Realms)",
+        "description": "The standard calendar of the Forgotten Realms, consisting of twelve 30-day months punctuated by five annual festival days.",
+        "months": {
+          "0": {
+            "name": "Hammer",
+            "abbreviation": "Ham",
+            "date": "Hammer"
+          },
+          "1": {
+            "name": "Midwinter",
+            "abbreviation": "Mid",
+            "date": "Midwinter"
+          },
+          "2": {
+            "name": "Alturiak",
+            "abbreviation": "Alt",
+            "date": "Alturiak"
+          },
+          "3": {
+            "name": "Ches",
+            "abbreviation": "Che",
+            "date": "Ches"
+          },
+          "4": {
+            "name": "Tarsakh",
+            "abbreviation": "Tar",
+            "date": "Tarsakh"
+          },
+          "5": {
+            "name": "Greengrass",
+            "abbreviation": "Gre",
+            "date": "Greengrass"
+          },
+          "6": {
+            "name": "Mirtul",
+            "abbreviation": "Mir",
+            "date": "Mirtul"
+          },
+          "7": {
+            "name": "Kythorn",
+            "abbreviation": "Kyt",
+            "date": "Kythorn"
+          },
+          "8": {
+            "name": "Flamerule",
+            "abbreviation": "Fla",
+            "date": "Flamerule"
+          },
+          "9": {
+            "name": "Midsummer",
+            "abbreviation": "Mid",
+            "date": "Midsummer"
+          },
+          "10": {
+            "name": "Shieldmeet",
+            "abbreviation": "Shi",
+            "date": "Shieldmeet"
+          },
+          "11": {
+            "name": "Eleasis",
+            "abbreviation": "Ele",
+            "date": "Eleasis"
+          },
+          "12": {
+            "name": "Eleint",
+            "abbreviation": "El",
+            "date": "Eleint"
+          },
+          "13": {
+            "name": "Highharvestide",
+            "abbreviation": "Hig",
+            "date": "Highharvestide"
+          },
+          "14": {
+            "name": "Marpenoth",
+            "abbreviation": "Mar",
+            "date": "Marpenoth"
+          },
+          "15": {
+            "name": "Uktar",
+            "abbreviation": "Ukt",
+            "date": "Uktar"
+          },
+          "16": {
+            "name": "Feast of the Moon",
+            "abbreviation": "Fes",
+            "date": "Feast of the Moon"
+          },
+          "17": {
+            "name": "Nightal",
+            "abbreviation": "Nig",
+            "date": "Nightal"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "First-day",
+            "abbreviation": "1D"
+          },
+          "1": {
+            "name": "Second-day",
+            "abbreviation": "2D"
+          },
+          "2": {
+            "name": "Third-day",
+            "abbreviation": "3D"
+          },
+          "3": {
+            "name": "Fourth-day",
+            "abbreviation": "4D"
+          },
+          "4": {
+            "name": "Fifth-day",
+            "abbreviation": "5D"
+          },
+          "5": {
+            "name": "Sixth-day",
+            "abbreviation": "6D"
+          },
+          "6": {
+            "name": "Seventh-day",
+            "abbreviation": "7D"
+          },
+          "7": {
+            "name": "Eighth-day",
+            "abbreviation": "8D"
+          },
+          "8": {
+            "name": "Ninth-day",
+            "abbreviation": "9D"
+          },
+          "9": {
+            "name": "Tenth-day",
+            "abbreviation": "10D"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Autumn"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Selûne"
+          }
+        }
+      },
+      "imperial": {
+        "name": "Imperial Calendar (Warhammer)",
+        "description": "The Imperial Calendar of the Old World, featuring 12 months and a 8-day week. Includes the two moons, Mannslieb and the erratic Morrslieb.",
+        "months": {
+          "0": {
+            "name": "Hexenstag",
+            "date": "Hexenstag"
+          },
+          "1": {
+            "name": "Nachexen",
+            "date": "Nachexen"
+          },
+          "2": {
+            "name": "Jahrdrung",
+            "date": "Jahrdrung"
+          },
+          "3": {
+            "name": "Mitterfruhl",
+            "date": "Mitterfruhl"
+          },
+          "4": {
+            "name": "Pflugzeit",
+            "date": "Pflugzeit"
+          },
+          "5": {
+            "name": "Sigmarzeit",
+            "date": "Sigmarzeit"
+          },
+          "6": {
+            "name": "Sommerzeit",
+            "date": "Sommerzeit"
+          },
+          "7": {
+            "name": "Sonnstill",
+            "date": "Sonnstill"
+          },
+          "8": {
+            "name": "Vorgeheim",
+            "date": "Vorgeheim"
+          },
+          "9": {
+            "name": "Geheimstag",
+            "date": "Geheimstag"
+          },
+          "10": {
+            "name": "Nachgeheim",
+            "date": "Nachgeheim"
+          },
+          "11": {
+            "name": "Erntezeit",
+            "date": "Erntezeit"
+          },
+          "12": {
+            "name": "Mittherbst",
+            "date": "Mittherbst"
+          },
+          "13": {
+            "name": "Brauzeit",
+            "date": "Brauzeit"
+          },
+          "14": {
+            "name": "Kaldzeit",
+            "date": "Kaldzeit"
+          },
+          "15": {
+            "name": "Ulriczeit",
+            "date": "Ulriczeit"
+          },
+          "16": {
+            "name": "Monstille",
+            "date": "Monstille"
+          },
+          "17": {
+            "name": "Vorhexen",
+            "date": "Vorhexen"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Wellentag"
+          },
+          "1": {
+            "name": "Aubentag"
+          },
+          "2": {
+            "name": "Marktag"
+          },
+          "3": {
+            "name": "Backertag"
+          },
+          "4": {
+            "name": "Bezahltag"
+          },
+          "5": {
+            "name": "Konistag"
+          },
+          "6": {
+            "name": "Angestag"
+          },
+          "7": {
+            "name": "Festag"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Autumn"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Mannslieb"
+          },
+          "1": {
+            "name": "Morrslieb"
+          }
+        }
+      },
+      "gregorian": {
+        "name": "Simplified Gregorian",
+        "description": "The Gregorian calendar with some simplifications regarding leap years or seasonal timing.",
+        "months": {
+          "0": {
+            "name": "January",
+            "abbreviation": "Jan",
+            "date": "January"
+          },
+          "1": {
+            "name": "February",
+            "abbreviation": "Feb",
+            "date": "February"
+          },
+          "2": {
+            "name": "March",
+            "abbreviation": "Mar",
+            "date": "March"
+          },
+          "3": {
+            "name": "April",
+            "abbreviation": "Apr",
+            "date": "April"
+          },
+          "4": {
+            "name": "May",
+            "abbreviation": "May",
+            "date": "May"
+          },
+          "5": {
+            "name": "June",
+            "abbreviation": "Jun",
+            "date": "June"
+          },
+          "6": {
+            "name": "July",
+            "abbreviation": "Jul",
+            "date": "July"
+          },
+          "7": {
+            "name": "August",
+            "abbreviation": "Aug",
+            "date": "August"
+          },
+          "8": {
+            "name": "September",
+            "abbreviation": "Sep",
+            "date": "September"
+          },
+          "9": {
+            "name": "October",
+            "abbreviation": "Oct",
+            "date": "October"
+          },
+          "10": {
+            "name": "November",
+            "abbreviation": "Nov",
+            "date": "November"
+          },
+          "11": {
+            "name": "December",
+            "abbreviation": "Dec",
+            "date": "December"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Monday",
+            "abbreviation": "Mon"
+          },
+          "1": {
+            "name": "Tuesday",
+            "abbreviation": "Tue"
+          },
+          "2": {
+            "name": "Wednesday",
+            "abbreviation": "Wed"
+          },
+          "3": {
+            "name": "Thursday",
+            "abbreviation": "Thu"
+          },
+          "4": {
+            "name": "Friday",
+            "abbreviation": "Fri"
+          },
+          "5": {
+            "name": "Saturday",
+            "abbreviation": "Sat"
+          },
+          "6": {
+            "name": "Sunday",
+            "abbreviation": "Sun"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Spring"
+          },
+          "1": {
+            "name": "Summer"
+          },
+          "2": {
+            "name": "Fall"
+          },
+          "3": {
+            "name": "Winter"
+          }
+        },
+        "moons": {
+          "0": {
+            "name": "Moon"
+          }
+        }
+      },
+      "thyatian": {
+        "name": "Thyatian (Mystara)",
+        "description": "The Thyatian calendar used in the Mystara setting, closely resembling the Gregorian calendar with 12 months and a 7-day week.",
+        "months": {
+          "0": {
+            "name": "Nuwmont",
+            "abbreviation": "Nuw",
+            "date": "Nuwmont"
+          },
+          "1": {
+            "name": "Vatermont",
+            "abbreviation": "Vat",
+            "date": "Vatermont"
+          },
+          "2": {
+            "name": "Thaumont",
+            "abbreviation": "Thau",
+            "date": "Thaumont"
+          },
+          "3": {
+            "name": "Flaurmont",
+            "abbreviation": "Flau",
+            "date": "Flaurmont"
+          },
+          "4": {
+            "name": "Yarthmont",
+            "abbreviation": "Yar",
+            "date": "Yarthmont"
+          },
+          "5": {
+            "name": "Klarmont",
+            "abbreviation": "Klar",
+            "date": "Klarmont"
+          },
+          "6": {
+            "name": "Felmont",
+            "abbreviation": "Fel",
+            "date": "Felmont"
+          },
+          "7": {
+            "name": "Fyrmont",
+            "abbreviation": "Fyr",
+            "date": "Fyrmont"
+          },
+          "8": {
+            "name": "Ambyrmont",
+            "abbreviation": "Amb",
+            "date": "Ambyrmont"
+          },
+          "9": {
+            "name": "Sviftmont",
+            "abbreviation": "Svi",
+            "date": "Sviftmont"
+          },
+          "10": {
+            "name": "Eirmont",
+            "abbreviation": "Eir",
+            "date": "Eirmont"
+          },
+          "11": {
+            "name": "Kaldmont",
+            "abbreviation": "Kal",
+            "date": "Kaldmont"
+          }
+        },
+        "days": {
+          "0": {
+            "name": "Soladain",
+            "abbreviation": "Sol"
+          },
+          "1": {
+            "name": "Lunadain",
+            "abbreviation": "Lun"
+          },
+          "2": {
+            "name": "Gromdain",
+            "abbreviation": "Gro"
+          },
+          "3": {
+            "name": "Tserdain",
+            "abbreviation": "Tse"
+          },
+          "4": {
+            "name": "Moldain",
+            "abbreviation": "Mol"
+          },
+          "5": {
+            "name": "Nytdain",
+            "abbreviation": "Nyt"
+          },
+          "6": {
+            "name": "Loshdain",
+            "abbreviation": "Los"
+          }
+        },
+        "seasons": {
+          "0": {
+            "name": "Winter"
+          },
+          "1": {
+            "name": "Spring"
+          },
+          "2": {
+            "name": "Summer"
+          },
+          "3": {
+            "name": "Autumn"
+          }
+        },
+        "moons": {}
+      }
     }
+  }
 }
