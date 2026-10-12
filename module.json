@@ -2,7 +2,7 @@
   "title": "PF2e Timekeeping",
   "description": "Календарь, часы, погода, фазы луны и события для Pathfinder 2e. Основан на Simple Timekeeping 1.1.3 от theripper93.",
   "id": "pf2e-timekeeping",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "authors": [
     {
       "name": "Yefim Lopatin",
@@ -119,7 +119,8 @@
         "id": "pf2e",
         "type": "system",
         "compatibility": {
-          "minimum": "8.5.0"
+          "minimum": "8.5.0",
+          "verified": "8.6.1"
         }
       }
     ],
@@ -132,8 +133,8 @@
   },
   "compatibility": {
     "minimum": "14.361",
-    "verified": "14.368",
+    "verified": "14.369",
     "maximum": "14"
   },
-  "download": "https://github.com/yefim-lopatin/pf2e-timekeeping/releases/download/v1.2.0/pf2e-timekeeping.zip"
+  "download": "https://github.com/yefim-lopatin/pf2e-timekeeping/releases/download/v1.2.1/pf2e-timekeeping.zip"
 }
